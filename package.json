@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "@graphql-codegen/cli": "^2.6.2",
-    "@graphql-codegen/typescript": "^2.4.8"
+    "@graphql-codegen/typescript": "^2.4.8",
+    "react-daum-postcode": "^3.0.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.16.0",

@@ -1,0 +1,78 @@
+import { useQuery, useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
+import BoardDetailUI from "./BoardDetail.presenter";
+import { FETCH_BOARD, LIKE_BOARD,DISLIKE_BOARD, DELETE_BOARD } from "./BoardDetail.queries";
+import {IDeleteVariables} from "./BoardDetail.types";
+import { MouseEvent } from "react";
+
+export default function BoardDetail() {
+  const router = useRouter();
+
+  const { data } = useQuery(FETCH_BOARD, {
+    variables: { boardId: String(router.query.boardId) }
+  });
+
+  const [callLikeCount] = useMutation(LIKE_BOARD);
+  const [callDislikeCount] = useMutation(DISLIKE_BOARD);
+  const [deleteBoard] = useMutation(DELETE_BOARD);
+
+
+  
+  const onClickLikeUp = async () => {
+    try {
+          await callLikeCount({
+          variables:  { boardId: String(router.query.boardId)},
+          refetchQueries:[{
+              query: FETCH_BOARD,
+              variables: {boardId: String(router.query.boardId) }
+            }]
+      }),
+      alert("게시글을 좋아합니다!");
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
+  };
+
+
+  const onClickDislikeUp = async () => {
+    try {
+          await callDislikeCount({
+        variables: { boardId: String(router.query.boardId)},
+        refetchQueries:[{
+            query: FETCH_BOARD,
+            variables: {boardId: String(router.query.boardId) }
+          }]
+    }),
+      alert("게시글을 싫어합니다!");
+    } catch (error) {}
+  };
+
+
+
+  const onClickDelete = (event: MouseEvent<HTMLButtonElement>) => {
+    const DeleteVariables: IDeleteVariables = {
+      boardId: (event.target as HTMLButtonElement).id
+    };
+    deleteBoard({ variables: DeleteVariables });
+    router.push("../boards");
+  };
+
+  const moveToList = () => {
+    router.push(`../../../../../boards`);
+  };
+
+  const moveToEdit = () => {
+    router.push(`../../../../../boards/${String(router.query.boardId)}/edit`);
+  };
+
+  return (
+    <BoardDetailUI
+      data={data}
+      onClickLikeUp={onClickLikeUp}
+      onClickDislikeUp={onClickDislikeUp}
+      onClickDelete={onClickDelete}
+      moveToEdit={moveToEdit}
+      moveToList={moveToList}
+    />
+  );
+}

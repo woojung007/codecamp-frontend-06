@@ -1,6 +1,9 @@
 //프레젠터
 import * as S from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
+import DaumPostcode from 'react-daum-postcode';
+import { Modal, Button } from 'antd';
+
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
@@ -55,11 +58,25 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <S.SmallTitle>주소</S.SmallTitle>
 
           <S.AdDiv>
-            <S.AdInput type="text" placeholder="07250" />
-            <S.AdBtn>우편번호 검색</S.AdBtn>
+            <S.AdInput value={props.zipcode} type="text" placeholder="07250" />
+            {/* <S.AdBtn >우편번호 검색</S.AdBtn> */}
+            <Button onClick={props.showModal}>
+              우편번호 검색
+            </Button>
+
+              {props.isOpen &&
+              <Modal 
+              visible={true}     
+              onOk={props.handleOk} 
+              onCancel={props.handleCancel}>
+
+                <DaumPostcode onComplete={props.handleComplete} />
+                </Modal>
+                }
+
           </S.AdDiv>
 
-          <S.TitleInput type="text" />
+          <S.TitleInput value={props.date}  type="text" />
           <S.TitleInput type="text" />
         </S.AdContainer>
 

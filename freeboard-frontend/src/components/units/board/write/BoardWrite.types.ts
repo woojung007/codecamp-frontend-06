@@ -16,6 +16,7 @@ export interface IUpdateVariables{
     writer?: string
     title?: string
     content?: string
+    youtubeUrl?: string
 }
 
 export interface ICreateBoardInput{
@@ -41,6 +42,13 @@ export interface IBoardWriteUIProps{
     isActive: boolean
     isEdit: boolean
     data?: any
+    showModal: () => void
+    handleOk: () => void
+    handleCancel: () => void
+    handleComplete: any
+    isOpen: boolean
+    date: any
+    zipcode: any
 
 }
 

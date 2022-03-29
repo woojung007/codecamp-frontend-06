@@ -5,3 +5,6 @@ export const getDate = (date: number) => {
   const dd = NewDate.getDate();
   return `${yyyy}-${mm}-${dd}`;
 };
+
+
+

@@ -2,21 +2,18 @@
 import * as S from "./BoardCommentList.styles";
 import {ICommentListUIProps} from "./BoardCommentList.types";
 import { MouseEvent } from "react"; 
-import { Rate } from 'antd'
+import { Modal, Rate } from 'antd'
+import { useState } from "react";
 
 export default function CommentListUI(props: ICommentListUIProps) {
-
-  const onClickAlert = (event: MouseEvent<HTMLDivElement>) => {
-    
-    alert(`${event.currentTarget.id}님이 작성한 글입니다.`)
-  }
 
 
   return (
     <S.BodyHTML>
       <S.Container>
         {props.data?.fetchBoardComments.map((el: any) => (
-          <S.CommentArea key={el._id}  id={String(el.id)}  onClick={onClickAlert}>
+          <S.CommentArea key={el._id}  id={String(el._id)}
+              onClick={props.onClickAlert}>
               <S.Profile>profile</S.Profile>
               <S.TextArea>
                 <S.Name>
@@ -34,7 +31,21 @@ export default function CommentListUI(props: ICommentListUIProps) {
               </S.IconDiv>
           </S.CommentArea>
         ))}
+
+            {props.isOpen &&
+                <Modal
+                  title="비밀번호를 입력해주세요"
+                  visible={true}
+                  onOk={props.deleteCommentApi}
+                  onCancel={props.handleCancel}
+                  >
+                  <S.ModalInput onChange={props.onChangePassword}  type="password"/>
+                </Modal>
+              }
+
       </S.Container>
     </S.BodyHTML>
+    
   );
+  
 }

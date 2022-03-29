@@ -4,6 +4,8 @@ import BoardDetailUI from "./BoardDetail.presenter";
 import { FETCH_BOARD, LIKE_BOARD,DISLIKE_BOARD, DELETE_BOARD } from "./BoardDetail.queries";
 import {IDeleteVariables} from "./BoardDetail.types";
 import { MouseEvent } from "react";
+import {Modal} from 'antd'
+
 
 export default function BoardDetail() {
   const router = useRouter();
@@ -27,7 +29,7 @@ export default function BoardDetail() {
               variables: {boardId: String(router.query.boardId) }
             }]
       }),
-      alert("게시글을 좋아합니다!");
+      Modal.success({content: "게시글을 좋아합니다!"})
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -43,7 +45,7 @@ export default function BoardDetail() {
             variables: {boardId: String(router.query.boardId) }
           }]
     }),
-      alert("게시글을 싫어합니다!");
+      Modal.warning({content: "게시글을 싫어합니다!!"})
     } catch (error) {}
   };
 

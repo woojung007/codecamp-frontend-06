@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_BOARD_COMMENT,FETCH_BOARD_COMMENTS } from "./BoardCommentWrite.queries";
 import CommentWriteUI from "./BoardCommentWrite.presenter";
 import { useRouter } from "next/router";
+import {Modal} from 'antd'
 
 
 
@@ -69,20 +70,16 @@ export default function CommentWrite() {
   };
 
   const onClickWriteComment = async () => {
-      console.log("router",router);
+      // console.log("router",router);
       
     if (writer === "") {
-      alert("이름을 입력해 주세요");
-    }
-    if (password === "") {
-      alert("비밀번호를 입력해주세요");
-    }
-    if (contents === "") {
-      alert("내용을 입력해주세요");
-    }
-
-    if (writer !== "" && password !== "" && contents !== "" ){
-      alert("댓글 등록에 성공했습니다!");
+      Modal.error({content: "이름을 입력해 주세요"})
+    }else if (password === "") {
+      Modal.error({content: "비밀번호를 입력해주세요"})
+    }else if (contents === "") {
+      Modal.error({content: "내용을 입력해주세요"})
+    }else if (writer !== "" && password !== "" && contents !== "" ){
+      Modal.success({content: "댓글 등록에 성공했습니다!!"})
     } 
 
       try {
@@ -105,10 +102,8 @@ export default function CommentWrite() {
         // console.log("comment result",result)
 
       }catch (error) {
-        if (error instanceof Error) alert(error.message);
+        // if (error instanceof Error) alert(error.message);
     }
-
-
   };
 
  

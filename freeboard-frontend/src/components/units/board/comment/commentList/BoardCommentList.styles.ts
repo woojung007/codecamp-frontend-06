@@ -11,14 +11,17 @@ export const Container = styled.div`
   width: 1200px;
   height: auto;
   margin-bottom: 280px;
-  border-bottom: 1px solid #bdbdbd ;
 `;
 
 export const CommentArea = styled.div`
   display: flex;
   width: 100%;
   height: 10vh;
+  border-bottom: 1px solid #bdbdbd ;
+  padding-top: 10px;
 `;
+
+export const ModalInput = styled.input``
 
 
 export const Profile = styled.div`

@@ -8,6 +8,8 @@ import {
   IBoardWriteProps,
   IUpdateVariables,
 } from "./BoardWrite.types";
+import { Modal, Button } from 'antd';
+
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const [isActive, setIsActive] = useState(false);
@@ -24,6 +26,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [titleError, setTitleError] = useState("");
   const [contentError, setContentError] = useState("");
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [date, setData] = useState("")
+  const [zipcode, setZipcode] = useState()
+
+
   // 입력값 보내기 & detail로 라우팅
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
@@ -35,10 +42,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
         boardId: router.query.boardId
       };
 
+      //비어있지 않으면 채워줘라
       if (writer !== "") updateVariables.writer = writer;
       if (title !== "") updateVariables.title = title;
       if (contents !== "") updateVariables.content = contents;
-      // if (youtubeUrl !== "") updateVariables.title = youtubeUrl;
+      if (youtubeUrl !== "") updateVariables.youtubeUrl = youtubeUrl;
 
 
       await updateBoard({
@@ -52,10 +60,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
           boardId: router.query.boardId,
         },
       });
-      console.log(router.query.boardId);
+      // console.log(router.query.boardId);
       router.push(`/boards/${router.query.boardId}`);
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      // if (error instanceof Error) Modal.error(error.message);
     }
   };
 
@@ -99,13 +107,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
       console.log("result", result)
 
       if (writer !== "" && password !== "" && title !== "" && contents !== "") {
-        alert("게시글 등록에 성공했습니다! 상세페이지로 이동합니다!");
+        Modal.success({content: "게시물 등록에 성공했습니다!! 상세페이지로 이동합니다!"})
+
       }
 
       router.push(`/boards/${result.data.createBoard._id}`);
-    } catch (error) {
-      if (error instanceof Error) alert(error.message);
-    }
+    } catch (error) {}
   };
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
@@ -166,6 +173,27 @@ export default function BoardWrite(props: IBoardWriteProps) {
     setYoutubeUrl(event.target.value);
   }
 
+
+
+  const showModal = () => {
+    setIsOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
+
+
+  const handleComplete = (data: any) => {
+    setData(data.address)
+    setZipcode(data.zonecode)
+    setIsOpen(false);
+  }
+
   return (
     <BoardWriteUI
       onChangeWriter={onChangeWriter}
@@ -182,6 +210,15 @@ export default function BoardWrite(props: IBoardWriteProps) {
       isActive={isActive}
       isEdit={props.isEdit}
       data={props.data}
+      handleOk={handleOk}
+      handleCancel={handleCancel}
+      handleComplete={handleComplete}
+      showModal={showModal}
+      isOpen={isOpen}
+      date={date}
+      zipcode={zipcode}
+
+
     />
   );
 }

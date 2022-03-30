@@ -18,10 +18,10 @@ export interface ICommentListUIProps{
   onClickAlert: (event: MouseEvent<HTMLDivElement>) => void
   visible: boolean
   // handleOk: () => void
-  showModal: () => void
+  showModal: (event) => void
   handleCancel: () => void
   isOpen: boolean
-  deleteCommentApi: () => void
+  // deleteCommentApi: () => void
   onChangePassword: (event: ChangeEvent<HTMLButtonElement>) => void
 
   }

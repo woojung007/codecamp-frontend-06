@@ -47,6 +47,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       if (title !== "") updateVariables.title = title;
       if (contents !== "") updateVariables.content = contents;
       if (youtubeUrl !== "") updateVariables.youtubeUrl = youtubeUrl;
+    
 
 
       await updateBoard({
@@ -101,7 +102,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
           password,
           title,
           contents,
-          youtubeUrl
+          youtubeUrl,
+          boardAddress:{
+            zipcode,
+            address,
+            addressDetail
+          }
         }}
       });
       console.log("result", result)
@@ -217,6 +223,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
       isOpen={isOpen}
       date={date}
       zipcode={zipcode}
+      boardAddress={boardAddress}
+      address={address}
+      addressDetail={addressDetail}
+
 
 
     />

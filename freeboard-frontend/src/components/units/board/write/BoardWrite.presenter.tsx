@@ -58,8 +58,13 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <S.SmallTitle>주소</S.SmallTitle>
 
           <S.AdDiv>
-            <S.AdInput value={props.zipcode} type="text" placeholder="07250" />
-            {/* <S.AdBtn >우편번호 검색</S.AdBtn> */}
+            <S.AdInput 
+            readOnly
+            value={props.zipcode ||
+            props.data?.fetchBoard.boardAddress?.zipcode ||
+            ""} 
+            type="text" placeholder="07250" />
+
             <Button onClick={props.showModal}>
               우편번호 검색
             </Button>
@@ -76,7 +81,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
 
           </S.AdDiv>
 
-          <S.TitleInput value={props.date}  type="text" />
+          <S.TitleInput readOnly value={props.date}  type="text" />
           <S.TitleInput type="text" />
         </S.AdContainer>
 

@@ -11,6 +11,8 @@ export const CREATE_BOARD = gql`
     title
     contents
     youtubeUrl
+    youtubeUrl
+    boardAddress
     likeCount
     dislikeCount
     createdAt

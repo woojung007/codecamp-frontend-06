@@ -25,23 +25,24 @@ export default function CommentListUI(props: ICommentListUIProps) {
               </S.TextArea>
               <S.IconDiv>
                 <S.EditBtn>edit</S.EditBtn>
-                <S.DeleteBtn id={el._id} onClick={props.onClickDeleteComment}>
+                <S.DeleteBtn id={el._id} onClick={props.showModal}>
                   delete
                 </S.DeleteBtn>
               </S.IconDiv>
           </S.CommentArea>
         ))}
-
-            {props.isOpen &&
-                <Modal
+                {props.isOpen &&
+                  <Modal
                   title="비밀번호를 입력해주세요"
-                  visible={true}
-                  onOk={props.deleteCommentApi}
+                  visible={props.isOpen}
+                  onOk={props.onClickDeleteComment}
                   onCancel={props.handleCancel}
                   >
                   <S.ModalInput onChange={props.onChangePassword}  type="password"/>
                 </Modal>
-              }
+                }
+
+
 
       </S.Container>
     </S.BodyHTML>

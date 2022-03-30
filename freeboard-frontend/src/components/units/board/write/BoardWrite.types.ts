@@ -17,6 +17,7 @@ export interface IUpdateVariables{
     title?: string
     content?: string
     youtubeUrl?: string
+
 }
 
 export interface ICreateBoardInput{

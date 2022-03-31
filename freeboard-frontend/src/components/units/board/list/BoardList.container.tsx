@@ -15,15 +15,18 @@ export default function BoardList(){
         router.push(`/boards/new`)
     }
 
-   const onClickMoveToBoardDetail = (event:MouseEvent<HTMLDivElement>) => {
-       router.push(`/boards/${(event.target as HTMLDivElement).id}`);
-   }
+    const onClickMoveToBoardDetail = (event:MouseEvent<HTMLDivElement>) => {
+        router.push(`/boards/${(event.target as HTMLDivElement).id}`);
+    }
+
+
 
     return(
         <BoardListUI
         data = {data}
         moveToWrite = {moveToWrite}
         onClickMoveToBoardDetail={onClickMoveToBoardDetail}
+
         />
     )
 }

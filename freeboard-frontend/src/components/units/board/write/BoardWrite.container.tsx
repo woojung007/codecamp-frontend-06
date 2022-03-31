@@ -8,7 +8,7 @@ import {
   IBoardWriteProps,
   IUpdateVariables,
 } from "./BoardWrite.types";
-import { Modal, Button } from 'antd';
+import { Modal } from 'antd';
 
 
 export default function BoardWrite(props: IBoardWriteProps) {
@@ -20,6 +20,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("")
+  const [zipcode, setZipcode] = useState("")
+  const [address, setAddress] = useState("")
+  const [addressDetail, setAddressDetail] = useState("")
+
+
 
   const [writerError, setWriterError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -28,7 +33,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [date, setData] = useState("")
-  const [zipcode, setZipcode] = useState()
+
 
 
   // 입력값 보내기 & detail로 라우팅
@@ -43,10 +48,16 @@ export default function BoardWrite(props: IBoardWriteProps) {
       };
 
       //비어있지 않으면 채워줘라
-      if (writer !== "") updateVariables.writer = writer;
-      if (title !== "") updateVariables.title = title;
-      if (contents !== "") updateVariables.content = contents;
-      if (youtubeUrl !== "") updateVariables.youtubeUrl = youtubeUrl;
+      if (writer) updateVariables.writer = writer;
+      if (title) updateVariables.title = title;
+      if (contents) updateVariables.content = contents;
+      if (youtubeUrl) updateVariables.youtubeUrl = youtubeUrl;
+      if (zipcode || address || addressDetail){
+        updateBoardInput.boardAddress = {};
+        if(zipcode) updateBoardInput.boardAddress.zipcode = zipcode;
+        if(address) updateBoardInput.boardAddress.address = address;
+        if(addressDetail) updateBoardInput.boardAddress.addressDetail = addressDetail;
+      }
     
 
 
@@ -55,7 +66,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
           updateBoardInput: {
             title: title,
             contents: contents,
-            youtubeUrl: youtubeUrl
+            youtubeUrl: youtubeUrl,
+            boardAddress:{
+              zipcode,
+              address,
+              addressDetail
+            }
           },
           password: password,
           boardId: router.query.boardId,
@@ -110,11 +126,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
           }
         }}
       });
-      console.log("result", result)
+      // console.log("result", result)
 
       if (writer !== "" && password !== "" && title !== "" && contents !== "") {
         Modal.success({content: "게시물 등록에 성공했습니다!! 상세페이지로 이동합니다!"})
-
       }
 
       router.push(`/boards/${result.data.createBoard._id}`);
@@ -223,7 +238,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
       isOpen={isOpen}
       date={date}
       zipcode={zipcode}
-      boardAddress={boardAddress}
       address={address}
       addressDetail={addressDetail}
 

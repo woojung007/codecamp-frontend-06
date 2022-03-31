@@ -3,7 +3,7 @@ import '../styles/globals.css'
 import {ApolloClient, ApolloProvider,InMemoryCache} from '@apollo/client'
 import { AppProps } from 'next/app';
 import { Global } from '@emotion/react';
-import Layout from '../src/components/commons/libraries/index';
+import Layout from '../src/components/commons/libraries/layout/index';
 import { globalStyles } from '../src/commons/types/generated/styles/globalStyles';
 
 

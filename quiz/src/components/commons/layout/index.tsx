@@ -13,7 +13,7 @@ const BodyWrapper = styled.div`
 `
 
 const Body = styled.div`
-    height: 500px;
+    width: 100%;
     background-color: white;
 `
 
@@ -22,26 +22,26 @@ interface ILayoutProps{
 }
 
 
-// const HIDDEN_HEADERS = [
-//     "/12-05-modal-refactoring"
-// ]
+const HIDDEN_HEADERS = [
+    "/11-quiz"
+]
 
 
 export default function Layout(props: ILayoutProps){
     const router = useRouter()
     console.log(router)
 
-    // const isHidden = HIDDEN_HEADERS.includes(router.asPath)
+    const isHidden = HIDDEN_HEADERS.includes(router.asPath)
 
     return (
         <>
-            {/* {!isHidden &&  */}
+            
             <LayoutHeader />
             <LayoutBanner />
             <LayoutNavigation />
             <BodyWrapper>
             <div>
-                <LayoutSidebar />
+            {!isHidden && <LayoutSidebar /> }
             </div>
             <Body>{props.children}</Body>
             </BodyWrapper>

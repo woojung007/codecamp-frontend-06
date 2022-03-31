@@ -45,11 +45,10 @@ function solution(num){
                       console.log(acc,answer)
                       return acc % 2 === 0
                       ? acc / 2          //짝수일 때
-                      : (acc * 3) + 1  
+                      : (acc * 3) + 1      //홀수일 때
                     }else{
                       return 1;
                     }
-                       //홀수일 때
                   }, num)
 
                   return result !== 1 ? -1 : answer;

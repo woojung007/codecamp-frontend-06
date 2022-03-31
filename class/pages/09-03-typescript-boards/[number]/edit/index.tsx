@@ -1,5 +1,5 @@
 //여기는 수정하기 페이지
-import BoardWrite from "../../../../src/components/units/board/09-board-write/BoardWrite.container";
+import BoardWrite from "../../../../src/components/commons/units/board/09-board-write/BoardWrite.container";
 import { useQuery,gql } from "@apollo/client";
 import { useRouter } from "next/router";
 

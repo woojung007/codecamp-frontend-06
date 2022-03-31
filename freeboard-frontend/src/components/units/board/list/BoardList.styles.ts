@@ -140,18 +140,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 padding-top: 50px;
-`
-
-export const ListNumDiv = styled.div`
-width:70%;
-/* background-color: blueviolet; */
-padding-left: 300px;
-text-align: center;
-color: #4F4F4F;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-
+background-color: aliceblue;
 `
 
 export const BoardWriteBtn = styled.button`
@@ -171,3 +160,30 @@ cursor: pointer;
   }
 
 `
+
+
+
+//pagination
+
+export const PagesWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+
+`
+
+export const Pages = styled.button`
+    border: 0;
+`
+
+export const PrevButton = styled.button`
+    cursor: pointer;
+
+`
+
+export const NextButton = styled.button`
+    cursor: pointer;
+
+`
+

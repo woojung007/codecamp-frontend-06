@@ -45,21 +45,6 @@ export default function Sliders(){
         return (
           <Wrapper>
                 <Slider {...settings}>
-                <div>
-                    <Img src='https://cdn.fneyefocus.com/news/photo/202012/15259_18481_3443.jpg'></Img>
-                </div>
-
-                <div>
-                    <Img src='https://cdn.fneyefocus.com/news/photo/202012/15259_18481_3443.jpg'></Img>
-                </div>
-
-                <div>
-                <Img src='https://cdn.fneyefocus.com/news/photo/202012/15259_18481_3443.jpg'></Img>
-                </div>
-
-                <div>
-                <Img src='https://cdn.fneyefocus.com/news/photo/202012/15259_18481_3443.jpg'></Img>
-                </div>
                 </Slider>
             </Wrapper>
         );

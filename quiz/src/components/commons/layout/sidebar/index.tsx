@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 const Wrapper = styled.div`
     width: 500px;
-    height: 500px;
+    height: auto;
     background-color: lightskyblue;
 `
 

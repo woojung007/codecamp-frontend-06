@@ -6,31 +6,6 @@ export default function BoardListUI(props: IListUIProps) {
   return (
     <s.BodyHTML>
       <s.Container>
-        <s.BestDiv>
-          <s.BestTitle>베스트 게시글</s.BestTitle>
-
-          <s.BestBoards>
-            <s.BestBoardDiv>
-              <s.BestBoardPic>pic</s.BestBoardPic>
-              <s.BestBoardContent>content</s.BestBoardContent>
-            </s.BestBoardDiv>
-
-            <s.BestBoardDiv>
-              <s.BestBoardPic>pic</s.BestBoardPic>
-              <s.BestBoardContent>content</s.BestBoardContent>
-            </s.BestBoardDiv>
-
-            <s.BestBoardDiv>
-              <s.BestBoardPic>pic</s.BestBoardPic>
-              <s.BestBoardContent>content</s.BestBoardContent>
-            </s.BestBoardDiv>
-
-            <s.BestBoardDiv>
-              <s.BestBoardPic>pic</s.BestBoardPic>
-              <s.BestBoardContent>content</s.BestBoardContent>
-            </s.BestBoardDiv>
-          </s.BestBoards>
-        </s.BestDiv>
         <s.SearchDiv>
           <s.SearchInput type="text" placeholder="제목을 검색해주세요." />
           <s.SearchDateInput
@@ -46,7 +21,7 @@ export default function BoardListUI(props: IListUIProps) {
             <s.ColumnSmall>작성자</s.ColumnSmall>
             <s.ColumnSmall>날짜</s.ColumnSmall>
           </s.RowTitle>
-          {props.data?.fetchBoards.map((el: any, index: number) => (
+          {props.dataRefetchBoards?.fetchBoards.map((el: any, index: number) => (
             <s.Row key={el._id}>
               <s.ColumnNum>{index + 1}</s.ColumnNum>
               <s.Column  id={el._id} onClick={props.onClickMoveToBoardDetail}>
@@ -56,11 +31,36 @@ export default function BoardListUI(props: IListUIProps) {
               <s.ColumnSmall>{getDate(el.createdAt)}</s.ColumnSmall>
             </s.Row>
           ))} 
+
+            <s.PagesWrapper>
+                <s.PrevButton  
+                  disabled={props.startPage === 1  ? true : false}  
+                  onClick={props.onClickPrevPage}>
+                    ❮
+                  </s.PrevButton>{`      `}
+
+                {
+                    new Array(10).fill(1).map((_, index) => index + props.startPage <= props.lastPage &&  (
+                        <s.Pages 
+                          style={{color : props.current === index + props.startPage? "red" : "black"}}
+                          key={index + props.startPage} 
+                          id={String(index + props.startPage)} 
+                          onClick={props.onClickPage}>
+                            {`      `}{index + props.startPage}
+                        </s.Pages>
+                    ))
+                } 
+                {`      `}
+
+                <s.NextButton 
+                  disabled={!(props.startPage + 10 <= props.lastPage)? true : false} 
+                  onClick={props.onClickNextPage}>
+                    ❯
+                </s.NextButton>
+            </s.PagesWrapper>
+
+
           <s.ListBottomDiv>
-            <s.ListNumDiv>
-              <span>1</span>
-              <span>2</span> 
-            </s.ListNumDiv>
             <s.BoardWriteBtn onClick={props.moveToWrite}>
               게시물 등록하기
             </s.BoardWriteBtn>

@@ -1,15 +1,12 @@
 import BoardListUI from './BoardList.presenter'
-import { useQuery } from '@apollo/client'
-import { FETCH_BOARDS } from './BoardList.queries'
 import { useRouter } from 'next/router'
 import { MouseEvent } from 'react'
 
 
 
-export default function BoardList(){
+export default function BoardList(props){
 
     const router = useRouter()
-    const {data} = useQuery(FETCH_BOARDS)
 
     const moveToWrite = () => {
         router.push(`/boards/new`)
@@ -23,7 +20,7 @@ export default function BoardList(){
 
     return(
         <BoardListUI
-        data = {data}
+        data = {props.data}
         moveToWrite = {moveToWrite}
         onClickMoveToBoardDetail={onClickMoveToBoardDetail}
 

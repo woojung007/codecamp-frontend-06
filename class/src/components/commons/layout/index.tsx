@@ -12,7 +12,7 @@ const BodyWrapper = styled.div`
 `
 
 const Body = styled.div`
-    height: 500px;
+    width: 90%;
 `
 
 const LayoutSidebar = styled.div`

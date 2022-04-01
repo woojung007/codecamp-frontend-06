@@ -1,4 +1,12 @@
 
+//Container
+
+export interface IPaginationPage{
+    dataBoardsCount: number
+    refetch: () => void
+    fetchBoardsCount: number
+}
+
 
 //presenter
 export interface IPaginationUI{

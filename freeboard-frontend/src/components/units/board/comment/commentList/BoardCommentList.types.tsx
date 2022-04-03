@@ -6,23 +6,23 @@ import {MouseEvent, ChangeEvent} from 'react'
 export interface ICommentListProps{
   boardId: string
   value?: any
+  data: any
 }
 
 
 
 //presenter
 export interface ICommentListUIProps{
-  onClickDeleteComment: (event: MouseEvent<HTMLButtonElement>) => void
   data?: any;
   id?: any
-  onClickAlert: (event: MouseEvent<HTMLDivElement>) => void
-  visible: boolean
-  // handleOk: () => void
+  onClickEdit: () => void
+  onClickDeleteComment: (event: MouseEvent<HTMLButtonElement>) => void
   showModal: (event) => void
+  onClickAlert: (event: MouseEvent<HTMLDivElement>) => void
   handleCancel: () => void
   isOpen: boolean
-  // deleteCommentApi: () => void
   onChangePassword: (event: ChangeEvent<HTMLButtonElement>) => void
-
+  onLoadMore: () => void
   }
   
+

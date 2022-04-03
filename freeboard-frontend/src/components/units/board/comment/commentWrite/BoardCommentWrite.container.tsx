@@ -1,7 +1,7 @@
 //container
 import { ChangeEvent, useState  } from "react";
 import { useMutation } from "@apollo/client";
-import { CREATE_BOARD_COMMENT,FETCH_BOARD_COMMENTS } from "./BoardCommentWrite.queries";
+import { CREATE_BOARD_COMMENT,FETCH_BOARD_COMMENTS, UPDATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";
 import CommentWriteUI from "./BoardCommentWrite.presenter";
 import { useRouter } from "next/router";
 import {Modal} from 'antd'
@@ -10,7 +10,7 @@ import {Modal} from 'antd'
 
 
 
-export default function CommentWrite() {
+export default function CommentWrite(props) {
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
   const [writer, setWriter] = useState("");
@@ -19,7 +19,7 @@ export default function CommentWrite() {
   const [value, setRating] = useState(5);
 
   
-
+  const [updateComment] = useMutation(UPDATE_BOARD_COMMENT)
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
 
     const handleChange = (value:any) => {
@@ -106,7 +106,34 @@ export default function CommentWrite() {
     }
   };
 
- 
+  const onClickUpdate = (event) => {
+    try{
+      updateComment({
+        variables:{ 
+          updateBoardCommentInput:{
+            contents: contents,
+            rating: Number(value)
+          },
+        password: password,
+        boardCommentId: props.el?._id
+        },
+        refetchQueries:[
+          {
+            query: FETCH_BOARD_COMMENTS,
+              variables: {
+              boardCommentId: router.query.boardId
+            }
+          }
+        ]
+      });
+      props.setIsEdit?.(false);
+    }catch{
+
+    }
+  }
+
+
+
 
   return (
     <CommentWriteUI
@@ -120,7 +147,8 @@ export default function CommentWrite() {
       password={password}
       handleChange={handleChange}
       value={value}
-
+      isEdit={props.isEdit}
+      onClickUpdate={onClickUpdate}
     />
   );
 }

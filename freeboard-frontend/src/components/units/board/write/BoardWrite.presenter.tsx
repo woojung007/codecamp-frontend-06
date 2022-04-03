@@ -81,8 +81,8 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
 
           </S.AdDiv>
 
-          <S.TitleInput readOnly value={props.date}  type="text" />
-          <S.TitleInput type="text" />
+          <S.TitleInput readOnly value={props.address}  type="text" />
+          <S.TitleInput  onChange={props.onChangeAddressDetail} type="text" />
         </S.AdContainer>
 
         <S.SmallTitle>유투브</S.SmallTitle>

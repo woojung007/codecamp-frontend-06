@@ -23,16 +23,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [zipcode, setZipcode] = useState("")
   const [address, setAddress] = useState("")
   const [addressDetail, setAddressDetail] = useState("")
-
-
-
   const [writerError, setWriterError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [titleError, setTitleError] = useState("");
   const [contentError, setContentError] = useState("");
-
   const [isOpen, setIsOpen] = useState(false);
-  const [date, setData] = useState("")
+
 
 
 
@@ -46,17 +42,16 @@ export default function BoardWrite(props: IBoardWriteProps) {
       const updateVariables: IUpdateVariables = {
         boardId: router.query.boardId
       };
-
       //비어있지 않으면 채워줘라
       if (writer) updateVariables.writer = writer;
       if (title) updateVariables.title = title;
       if (contents) updateVariables.content = contents;
       if (youtubeUrl) updateVariables.youtubeUrl = youtubeUrl;
       if (zipcode || address || addressDetail){
-        updateBoardInput.boardAddress = {};
-        if(zipcode) updateBoardInput.boardAddress.zipcode = zipcode;
-        if(address) updateBoardInput.boardAddress.address = address;
-        if(addressDetail) updateBoardInput.boardAddress.addressDetail = addressDetail;
+        updateVariables.boardAddress = {};
+      if(zipcode) updateVariables.boardAddress.zipcode = zipcode;
+      if(address) updateVariables.boardAddress.address = address;
+      if(addressDetail) updateVariables.boardAddress.addressDetail = addressDetail;
       }
     
 
@@ -64,9 +59,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
       await updateBoard({
         variables: {
           updateBoardInput: {
-            title: title,
-            contents: contents,
-            youtubeUrl: youtubeUrl,
+            title,
+            contents,
+            youtubeUrl,
             boardAddress:{
               zipcode,
               address,
@@ -85,7 +80,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   };
 
   const callGraphqlAPI = async () => {
-    // console.log("router",router)
+
     if (writer === "") {
       setWriterError("이름을 입력해 주세요");
     } else {
@@ -190,11 +185,17 @@ export default function BoardWrite(props: IBoardWriteProps) {
   };
 
 
+const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
+  setAddressDetail(event.target.value)
+}
+
+
   const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
     setYoutubeUrl(event.target.value);
   }
 
 
+  //주소 modal창
 
   const showModal = () => {
     setIsOpen(true);
@@ -210,8 +211,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
 
   const handleComplete = (data: any) => {
-    setData(data.address)
     setZipcode(data.zonecode)
+    setAddress(data.address)
     setIsOpen(false);
   }
 
@@ -221,6 +222,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       onChangePassword={onChangePassword}
       onChangeTitle={onChangeTitle}
       onChangeContents={onChangeContents}
+      onChangeAddressDetail={onChangeAddressDetail}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
       callGraphqlAPI={callGraphqlAPI}
       onClickUpdate={onClickUpdate}
@@ -236,7 +238,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
       handleComplete={handleComplete}
       showModal={showModal}
       isOpen={isOpen}
-      date={date}
       zipcode={zipcode}
       address={address}
       addressDetail={addressDetail}

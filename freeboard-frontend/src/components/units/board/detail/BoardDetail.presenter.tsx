@@ -10,7 +10,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         <s.ContentsContainer>
           <s.Header>
             <s.LocationDiv id="showLocation">
-              <s.IMG src="/location-kr.png" />
+                {props.data?.fetchBoard.boardAddress.address}<br />
+                {props.data?.fetchBoard.boardAddress.addressDetail}
             </s.LocationDiv>
             <s.HeaderDiv>
               <s.InfoDiv>

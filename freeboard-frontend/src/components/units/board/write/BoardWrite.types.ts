@@ -1,3 +1,4 @@
+import { ObjectTypeExtensionNode } from "graphql"
 import { ChangeEvent } from "react" 
 
 
@@ -17,6 +18,11 @@ export interface IUpdateVariables{
     title?: string
     content?: string
     youtubeUrl?: string
+    boardAddress?: {
+        zipcode?: string
+        address?: string
+        addressDetail?: string
+    }
 
 }
 
@@ -33,6 +39,7 @@ export interface IBoardWriteUIProps{
     onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void
     onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void
     onChangeContents: (event: ChangeEvent<HTMLInputElement>) => void
+    onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void
     onChangeYoutubeUrl:(event: ChangeEvent<HTMLInputElement>) => void
     callGraphqlAPI: () => void
     onClickUpdate: () => void
@@ -48,8 +55,10 @@ export interface IBoardWriteUIProps{
     handleCancel: () => void
     handleComplete: any
     isOpen: boolean
-    date: any
     zipcode: any
+    address:string
+    addressDetail:string
+
 
 }
 

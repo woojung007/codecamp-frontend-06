@@ -2,7 +2,7 @@
 import * as S from "./BoardCommentWrite.styles";
 import { ICommentWriteUIProps } from "./BoardCommentWrite.types";
 import {Rate} from 'antd';
-import { Rating } from '../commentList/BoardCommentList.styles';
+
 
 
 
@@ -46,10 +46,10 @@ export default function CommentWriteUI(props: ICommentWriteUIProps) {
               <S.CommentCountDiv>
                 <S.CommentCount>{props.contents.length} / 100</S.CommentCount>
                 <S.CommentBtn
-                  onClick={props.onClickWriteComment}
+                  onClick={ props.isEdit ? props.onClickUpdate : props.onClickWriteComment}
                   isActive={props.isActive}
                 >
-                  하기
+                  {props.isEdit ? "수정하기" : "등록하기"}
                 </S.CommentBtn>
               </S.CommentCountDiv>
             </S.CommentWriteDiv>

@@ -17,7 +17,7 @@ const MyColumn = styled.div`
 export default function BoardCommentItem(props){
     const [isEdit, setIsEdit] = useState(false)
 
-      const onClickEdit = (event) => {
+    const onClickEdit = (event) => {
         setIsEdit(true);
     }
 

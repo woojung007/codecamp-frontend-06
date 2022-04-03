@@ -14,6 +14,8 @@ export default function BoardDetail() {
     variables: { boardId: String(router.query.boardId) }
   });
 
+  console.log("data",data)
+
   const [callLikeCount] = useMutation(LIKE_BOARD);
   const [callDislikeCount] = useMutation(DISLIKE_BOARD);
   const [deleteBoard] = useMutation(DELETE_BOARD);

@@ -41,7 +41,10 @@ export const LocationDiv = styled.div`
   height: 72px;
   margin-right: 35px;
   margin-top: 20px;
-  opacity: 0;
+  opacity: 1;
+  background-color: aliceblue;
+  color: black;
+  text-align: center;
 `;
 
 export const HeaderDiv = styled.div`

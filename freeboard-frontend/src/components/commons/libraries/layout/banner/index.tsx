@@ -7,9 +7,9 @@ import "slick-carousel/slick/slick-theme.css";
 //yarn install slick-carousel
 
 const Wrapper = styled.div`
+
     height: 500px;
     background-color: pink;
-
 `
 
 

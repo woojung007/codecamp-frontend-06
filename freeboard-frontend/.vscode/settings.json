@@ -2,7 +2,11 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "cSpell.ignoreWords": [
+        "Daum",
         "antd",
-        "bestboards"
+        "bestboards",
+        "scroller",
+        "zipcode",
+        "zonecode"
     ]
 }

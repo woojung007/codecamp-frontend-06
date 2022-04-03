@@ -23,13 +23,10 @@ export default function GraphqlMutationPage(){
 
     const callGraphqlAPI = async () => {
 
-        // const result = await axios.get("https://koreanjson.com/posts/1")
-        //get - method        /posts - endpoint
-
     try{
         const result = await callAPI({
             variables: { writer : myWriter ,title : myTitle, contents : myContents }
-        }) //graphql-api 방식
+        }) 
         console.log(result)
         console.log(result.data.createBoard.message)
         alert("게시글 등록에 성공했어요!")

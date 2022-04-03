@@ -15,6 +15,7 @@ const FETCH_BOARD = gql`
 
 export default function StaticRoutedPage(){
     const router = useRouter()
+    const [isEdit, setIsEdit] = useState(false)
 
     const {data} = useQuery(FETCH_BOARD, {
         variables: {number: Number(router.query.number)}
@@ -23,7 +24,7 @@ export default function StaticRoutedPage(){
     console.log(data)
 
     const onClickMove = () => {
-
+        setIsEdit(true);
         router.push(`/09-01-boards/${router.query.number}/edit`)
     }
 

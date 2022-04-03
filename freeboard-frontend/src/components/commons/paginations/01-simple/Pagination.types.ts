@@ -4,7 +4,7 @@
 export interface IPaginationPage{
     dataBoardsCount: number
     refetch: () => void
-    fetchBoardsCount: number
+    fetchBoardsCount: any
 }
 
 

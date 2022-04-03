@@ -1,7 +1,7 @@
 //container
 import CommentListUI from "./BoardCommentList.presenter";
 import { useQuery, useMutation } from '@apollo/client';
-import { FETCH_BOARD_COMMENTS, DELETE_BOARD_COMMENT } from "./BoardCommentList.queries";
+import { FETCH_BOARD_COMMENTS, DELETE_BOARD_COMMENT, UPDATE_BOARD_COMMENT } from "./BoardCommentList.queries";
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { MouseEvent, ChangeEvent } from "react";
@@ -16,12 +16,73 @@ export default function CommentList(props: ICommentListProps){
   const [isOpen, setIsOpen] = useState(false);
   const [password, setPassword] = useState();
   const [commentId, setCommentId] = useState("");
-
-  const {data} = useQuery(FETCH_BOARD_COMMENTS,{
+  
+  const {data, fetchMore} = useQuery(FETCH_BOARD_COMMENTS,{
       variables:{
         boardId: String(router.query.boardId)
-        }});
+        }
+      }
+    );
+
     // console.log("data", data)
+
+
+
+
+
+
+    const onClickDeleteComment =  (event: MouseEvent<HTMLButtonElement>) => {
+      // console.log("commentId", router)
+      try{
+          deleteComment({
+              variables:{password: password, boardCommentId: commentId},
+              refetchQueries: [
+                { query: FETCH_BOARD_COMMENTS,
+                variables:{boardId: String(router.query.boardId)},
+              },
+            ]
+            })
+            Modal.success({content:"댓글이 삭제되었습니다."})
+            setIsOpen(false);
+        }catch(error:any){
+          alert(error.message)
+        }
+      }
+    
+  
+
+
+    //infinite-scroll
+    const onLoadMore = () => {
+      if(!data) return;
+
+      fetchMore({
+          variables:{
+            boardId: String(router.query.boardId),
+            page : Math.ceil(data.fetchBoardComments.length / 10) + 1},
+          updateQuery: (prev, { fetchMoreResult }) => {
+              if(!fetchMoreResult.fetchBoardComments)
+                  return {fetchBoardComments: [...prev.fetchBoardComments]};
+            return {
+              fetchBoardComments:  [...prev.fetchBoardComments, ...fetchMoreResult.fetchBoardComments]
+              };
+          }
+      });
+  };
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -42,29 +103,11 @@ export default function CommentList(props: ICommentListProps){
 
 
     const onChangePassword = (event: ChangeEvent<HTMLButtonElement>) => {
-      // console.log(event.target.value)
       setPassword(event.target.value)
     }
 
 
-    const onClickDeleteComment =  (event: MouseEvent<HTMLButtonElement>) => {
-      // console.log("commentId", router)
-      try{
-          deleteComment({
-              variables:{password: password, boardCommentId: commentId},
-              refetchQueries: [
-                { query: FETCH_BOARD_COMMENTS,
-                variables:{boardId: String(router.query.boardId)},
-              },
-            ]
-            })
-            Modal.success({content:"댓글이 삭제되었습니다."})
-            setIsOpen(false);
-        }catch(error){
-          alert(error.message)
-        }
-      }
-    
+ 
 
 
   return (
@@ -75,8 +118,8 @@ export default function CommentList(props: ICommentListProps){
     onClickAlert={onClickAlert}
     handleCancel={handleCancel}
     isOpen={isOpen}
-    // deleteCommentApi={deleteCommentApi}
     onChangePassword={onChangePassword}
+    onLoadMore={onLoadMore}
   />
 )
   

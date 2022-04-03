@@ -1,6 +1,6 @@
 import PaginationUI from "./Pagination.presenter";
 import { MouseEvent, useState } from 'react'
-import { IPagination } from "./Pagination.types";
+import { IPaginationPage } from "./Pagination.types";
 
 
 

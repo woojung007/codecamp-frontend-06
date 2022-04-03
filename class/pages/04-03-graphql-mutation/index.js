@@ -14,7 +14,7 @@ const CREATE_BOARD = gql`
 
 export default function GraphqlMutationPage(){
     
-    const [data, setData] = useState("")
+    // const [data, setData] = useState("")
     const [callAPI] = useMutation(CREATE_BOARD)
 
     const callGraphqlAPI = async () => {

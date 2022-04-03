@@ -4,8 +4,8 @@ import { gql} from '@apollo/client'
 
 
 export const CREATE_BOARD = gql`
-    mutation MyMutation($createBoardInput: CreateBoardInput!, $boardAddress:boardAddress){
-    createBoard(createBoardInput: $createBoardInput, boardAddress: $boardAddress){
+    mutation MyMutation($createBoardInput: CreateBoardInput!){
+    createBoard(createBoardInput: $createBoardInput){
     _id
     writer
     title
@@ -13,7 +13,11 @@ export const CREATE_BOARD = gql`
     youtubeUrl
     likeCount
     dislikeCount
-    boardAddress
+    boardAddress{
+        zipcode
+        address
+        addressDetail
+    }
     createdAt
     updatedAt
     deletedAt
@@ -23,8 +27,8 @@ export const CREATE_BOARD = gql`
 
 
 export const UPDATE_BOARD = gql`
-    mutation updateBoard($updateBoardInput: UpdateBoardInput!, $boardAddress: BoardAddress, $password: String, $boardId: ID!){
-        updateBoard(updateBoardInput: $updateBoardInput, boardAddress: $boardAddress, password: $password, boardId: $boardId){
+    mutation updateBoard($updateBoardInput: UpdateBoardInput!,$password: String, $boardId: ID!){
+        updateBoard(updateBoardInput: $updateBoardInput, password: $password, boardId: $boardId){
             _id
             writer
             title
@@ -32,7 +36,6 @@ export const UPDATE_BOARD = gql`
             youtubeUrl
             likeCount
             dislikeCount
-            boardAddress
             createdAt
             updatedAt
             deletedAt

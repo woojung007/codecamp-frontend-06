@@ -28,7 +28,7 @@ export default function BoardListUI(props: IListUIProps) {
                 {el.title}
               </s.Column>
               <s.ColumnSmall>{el.writer}</s.ColumnSmall>
-              <s.ColumnSmall>{getDate(el.createdAt)}</s.ColumnSmall>
+              <s.ColumnSmall>{el.createdAt.slice(0,10)}</s.ColumnSmall>
             </s.Row>
           ))} 
 

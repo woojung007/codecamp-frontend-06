@@ -3,6 +3,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "cSpell.ignoreWords": [
         "Daum",
+        "Signup",
+        "Wrapper",
+        "aliceblue",
         "antd",
         "bestboards",
         "scroller",

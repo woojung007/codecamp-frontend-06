@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, MouseEvent } from "react";
 import { Rating } from '../commentList/BoardCommentList.styles';
 
 //container
@@ -30,6 +30,7 @@ export interface ICommentWriteUIProps {
   onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onClickWriteComment: () => void;
+  onClickUpdate: (event: MouseEvent<HTMLButtonElement>) => void
   isActive: boolean;
   id?: any
   writer: string
@@ -37,6 +38,7 @@ export interface ICommentWriteUIProps {
   contents: string
   value: number
   handleChange: any
+  isEdit: boolean
 }
 
 

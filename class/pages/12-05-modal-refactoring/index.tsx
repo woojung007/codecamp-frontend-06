@@ -20,7 +20,6 @@ const ModalCustomPage = () => {
       <Button onClick={onToggleModal}>
         Open Modal
       </Button>
-
       {isOpen &&
       <Modal visible={true} onOk={onToggleModal} onCancel={onToggleModal}>
         <DaumPostcode  onComplete={handleComplete} />

@@ -9,21 +9,30 @@ export default function BoardBestListUI(props: IBoardBestListUI) {
   return (
     <S.BestDiv>
           <S.BestTitle>베스트 게시글</S.BestTitle>
-          
-          {props.BestBoardsData?.fetchBoardsOfTheBest.map((el: any) => (
-          <S.BestBoards key={el._id}>
-              <S.BestBoardPic>{el.images}</S.BestBoardPic>
+        
+          <S.BestBoardsWrapper>
+            {props.BestBoardsData?.fetchBoardsOfTheBest.map((el: any) => (
+              <S.BestBoards key={el._id}>
+                  <S.BestBoardPic >{el.images}</S.BestBoardPic>
 
-                <S.BestBoardTitle>{el.title}</S.BestBoardTitle>
+                  <S.BestBoardBottom>
+                    <S.BestBottomLeft>
+                      <S.BestBoardTitle>{el.title}</S.BestBoardTitle>
+                      <S.WriterDiv>
+                        <S.BestBoardUser></S.BestBoardUser>
+                        <S.BestBoardWriter>{el.writer}</S.BestBoardWriter>
+                      </S.WriterDiv>
+                      <S.BestBoardDate>Date : {el.createdAt.slice(0,10)}</S.BestBoardDate>
+                    </S.BestBottomLeft>
 
-                <S.WriterDiv>
-                  <S.BestBoardUser>1231231</S.BestBoardUser>
-                  <S.BestBoardWriter>{el.writer}</S.BestBoardWriter>
-                  <S.BestBoardDate>{el.createdAt}</S.BestBoardDate>
-                  </S.WriterDiv>
-
-          </S.BestBoards>
-          ))}
+                    <S.BestBottomRight>
+                      <S.BestBoardLike></S.BestBoardLike>
+                      <S.BestBoardLikeCount>{el.likeCount}</S.BestBoardLikeCount>
+                    </S.BestBottomRight>
+                  </S.BestBoardBottom>
+              </S.BestBoards>
+            ))}
+        </S.BestBoardsWrapper>
       </S.BestDiv>
   );
 }

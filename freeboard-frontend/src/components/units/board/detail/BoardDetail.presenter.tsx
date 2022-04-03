@@ -2,37 +2,50 @@ import { getDate } from "../../../commons/libraries/utils";
 import * as s from "./BoardDetail.styles";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
 import ReactPlayer from 'react-player'
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import { Tooltip, Button } from 'antd';
+
+
+
+
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
+
+  const text = <span> {props.data?.fetchBoard.boardAddress.address}<br />
+                    {props.data?.fetchBoard.boardAddress.addressDetail}</span>;
+
+
+  const buttonWidth = 60;
+  const color ='gold'
+
+
   return (
     <s.BodyHTML>
       <s.Container>
         <s.ContentsContainer>
           <s.Header>
-            <s.LocationDiv id="showLocation">
-                {props.data?.fetchBoard.boardAddress.address}<br />
-                {props.data?.fetchBoard.boardAddress.addressDetail}
-            </s.LocationDiv>
             <s.HeaderDiv>
-              <s.InfoDiv>
-                <s.IMG src="/user.png" />
-                <s.InfoText>
-                  <s.Writer>{props.data?.fetchBoard.writer}</s.Writer>
-                  <s.Date>
-                    Date : {getDate(props.data?.fetchBoard.updatedAt)}
-                  </s.Date>
-                </s.InfoText>
-              </s.InfoDiv>
+                <s.InfoDiv>
+                  <Avatar size="large" icon={<UserOutlined />} />
+                  <s.InfoText>
+                    <s.Writer>{props.data?.fetchBoard.writer}</s.Writer>
+                    <s.Date>
+                      Date : {getDate(props.data?.fetchBoard.updatedAt)}
+                    </s.Date>
+                  </s.InfoText>
+                </s.InfoDiv>
+              </s.HeaderDiv>
+              <s.HeaderTopDiv>
+                  <Button  icon={<s.LinkIcon  style={{ width: buttonWidth, marginRight: 10, border: 0}}></s.LinkIcon> }></Button>
 
-              <s.IconDiv>
-                <s.LinkImg>
-                  <s.IMG src="/link.png" />
-                </s.LinkImg>
-                <s.LocationImg>
-                  <s.IMG src="/location.png" />
-                </s.LocationImg>
-              </s.IconDiv>
-            </s.HeaderDiv>
+              <s.LocationDiv color={color} key={color}>
+                <Tooltip placement="topRight" title={text}>
+                  <Button  icon={<s.LocationIcon  style={{ width: buttonWidth, marginRight: 10 }}></s.LocationIcon> }></Button>
+                </Tooltip>
+              </s.LocationDiv>
+            </s.HeaderTopDiv>
+
           </s.Header>
 
           <s.Contents>
@@ -66,19 +79,13 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             <s.BoardDiv>
               <s.BoardLike>
                 <s.LikeDiv>
-                  <s.LikeBtn onClick={props.onClickLikeUp}>
-                    <s.IMG src="/like.png" />
-                  </s.LikeBtn>
+                  <s.LikeIcon onClick={props.onClickLikeUp}/>
                   <s.LikeNum>{props.data?.fetchBoard.likeCount}</s.LikeNum>
                 </s.LikeDiv>
 
                 <s.LikeDiv>
-                  <s.LikeBtn onClick={props.onClickDislikeUp}>
-                    <s.IMG src="/unlike.png" />
-                  </s.LikeBtn>
-                  <s.DisLikeNum>
-                    {props.data?.fetchBoard.dislikeCount}
-                  </s.DisLikeNum>
+                  <s.DisLikeIcon  onClick={props.onClickDislikeUp} />
+                  <s.DisLikeNum>{props.data?.fetchBoard.dislikeCount}</s.DisLikeNum>
                 </s.LikeDiv>
               </s.BoardLike>
             </s.BoardDiv>

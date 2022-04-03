@@ -13,7 +13,7 @@ padding: 0 100px 20px 100px;
 border: 0.5px solid #bdbdbd;
 box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 margin-top: 101px;
-margin-bottom: 280px;
+margin-bottom: 100px;
 `
 
 //Best
@@ -62,7 +62,7 @@ justify-content: space-evenly;
 align-items: center;
 width: 100%;
 padding-bottom: 40px;
-/* background-color: yellow; */
+padding-top: 40px;
 `
 
 export const SearchInput = styled.input`
@@ -71,13 +71,18 @@ height: 52px;
 background: #F2F2F2;
 border: none;
 border-radius: 10px;
+padding-left: 15px;
 `
 
 export const SearchDateInput = styled.input`
 width: 20%;
 height: 52px;
 border: 1px solid #BDBDBD;
-
+font-weight: 400;
+font-size: 12px;
+line-height: 24px;
+text-align: center;
+color: #BDBDBD;
 `
 
 export const SearchBtn = styled.button`
@@ -85,7 +90,14 @@ width: 94px;
 height: 52px;
 background: #000000;
 border-radius: 10px;
+border: none;
 color: #fff;
+cursor: pointer;
+:hover{
+    background-color: #fff;
+    color: #000000;
+    border: 1px solid #BDBDBD;
+}
 `
 
 
@@ -101,7 +113,7 @@ border-bottom: 1px solid #BDBDBD;
 text-align: center;
 height: 7%;
 color: #4F4F4F;
-font-weight: 400;
+font-weight: 600;
 font-size: 16px;
 line-height: 50px;
 `
@@ -112,13 +124,15 @@ border-bottom: 1px solid #BDBDBD;
 text-align: center;
 height: 7%;
 color: #4F4F4F;
-font-weight: 400;
+font-weight: 200;
 font-size: 16px;
 line-height: 50px;
 
 cursor: pointer;
 :hover{
-    background-color: aliceblue;
+    background-color: black;
+    color: #fff;
+    font-weight: 600;
 }
 `
 
@@ -127,7 +141,11 @@ width: 5%;
 `
 
 export const Column = styled.div`
-width: 70%;
+width: 60%;
+white-space: nowrap; 
+overflow: hidden; 
+text-overflow: ellipsis; 
+padding-left: 20px;
 `
 
 export const ColumnSmall = styled.div`
@@ -140,13 +158,12 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 padding-top: 50px;
-background-color: aliceblue;
 `
 
 export const BoardWriteBtn = styled.button`
 width: 171px;
 height: 52px;
-border: 1px solid #F2F2F2;
+border: 1px solid #BDBDBD;
 background-color: #fff;
 box-sizing: border-box;
 border-radius: 10px;
@@ -156,8 +173,9 @@ font-size: 16px;
 cursor: pointer;
 
 :hover {
-    background-color: #f5f2fc;
-  }
+    background-color: black;
+    color: #fff;
+}
 
 `
 

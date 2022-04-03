@@ -10,6 +10,11 @@ export const FETCH_BOARDS_QUERIES = gql`
             title
             createdAt
             updatedAt
+            boardAddress{
+                zipcode
+                address
+                addressDetail
+            }
         }
     }
 `

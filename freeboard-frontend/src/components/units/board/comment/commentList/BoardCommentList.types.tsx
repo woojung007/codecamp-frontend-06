@@ -17,12 +17,13 @@ export interface ICommentListUIProps{
   id?: any
   onClickEdit: () => void
   onClickDeleteComment: (event: MouseEvent<HTMLButtonElement>) => void
-  showModal: (event) => void
+  showModal: (event: any) => void
   onClickAlert: (event: MouseEvent<HTMLDivElement>) => void
   handleCancel: () => void
   isOpen: boolean
   onChangePassword: (event: ChangeEvent<HTMLButtonElement>) => void
   onLoadMore: () => void
+  
   }
   
 

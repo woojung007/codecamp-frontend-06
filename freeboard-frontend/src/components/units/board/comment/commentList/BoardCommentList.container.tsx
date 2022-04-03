@@ -1,7 +1,7 @@
 //container
 import CommentListUI from "./BoardCommentList.presenter";
 import { useQuery, useMutation } from '@apollo/client';
-import { FETCH_BOARD_COMMENTS, DELETE_BOARD_COMMENT, UPDATE_BOARD_COMMENT } from "./BoardCommentList.queries";
+import { FETCH_BOARD_COMMENTS, DELETE_BOARD_COMMENT} from "./BoardCommentList.queries";
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { MouseEvent, ChangeEvent } from "react";
@@ -25,9 +25,6 @@ export default function CommentList(props: ICommentListProps){
     );
 
     // console.log("data", data)
-
-
-
 
 
 
@@ -73,26 +70,12 @@ export default function CommentList(props: ICommentListProps){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const onClickAlert = (event: MouseEvent<HTMLDivElement>) => {
       Modal.info({content:`${event.currentTarget.id}님이 작성한 글입니다.`})
     }
       
 
-    const showModal = (event) => {
+    const showModal = (event:any) => {
       setIsOpen(true);
       setCommentId(event.target.id)
     }

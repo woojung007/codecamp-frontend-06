@@ -9,7 +9,6 @@ import {Rate} from 'antd';
 
 export default function CommentWriteUI(props: ICommentWriteUIProps) {
   return (
-    <S.BodyHTML>
       <S.Container>
         <S.CommentDiv>
           <S.CommentWriteEdit>
@@ -56,6 +55,5 @@ export default function CommentWriteUI(props: ICommentWriteUIProps) {
           </S.CommentWriteEdit>
         </S.CommentDiv>
       </S.Container>
-    </S.BodyHTML>
   );
 }

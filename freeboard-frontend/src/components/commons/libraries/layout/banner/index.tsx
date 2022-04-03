@@ -7,9 +7,10 @@ import "slick-carousel/slick/slick-theme.css";
 //yarn install slick-carousel
 
 const Wrapper = styled.div`
-
-    height: 500px;
     background-color: pink;
+    height: 500px;
+
+
 `
 
 
@@ -26,13 +27,6 @@ const SimpleSlider = styled(Slider)`
 
 `
 
-const Img = styled.img`
-    width: 1920px;
-    height: 400px;
-    margin-left: 1500px;
-    margin: auto;
-`
-
 
 
 export default function Sliders(){
@@ -44,11 +38,11 @@ export default function Sliders(){
         slidesToShow: 1,
         slidesToScroll: 1,
         centerMode: true,
-      };
-      
+        };
+    
 
         return (
-          <Wrapper>
+            <Wrapper>
                 <SimpleSlider {...settings}>
                     
                     <div></div>
@@ -62,8 +56,5 @@ export default function Sliders(){
         );
     
     }
-
- 
- 
 
 

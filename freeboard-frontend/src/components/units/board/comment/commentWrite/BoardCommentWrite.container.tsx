@@ -1,5 +1,5 @@
 //container
-import { ChangeEvent, useState  } from "react";
+import { ChangeEvent, MouseEvent , useState  } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_BOARD_COMMENT,FETCH_BOARD_COMMENTS, UPDATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";
 import CommentWriteUI from "./BoardCommentWrite.presenter";
@@ -9,8 +9,7 @@ import {Modal} from 'antd'
 
 
 
-
-export default function CommentWrite(props) {
+export default function CommentWrite(props: any) {
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
   const [writer, setWriter] = useState("");
@@ -106,7 +105,7 @@ export default function CommentWrite(props) {
     }
   };
 
-  const onClickUpdate = (event) => {
+  const onClickUpdate = (event: MouseEvent<HTMLButtonElement>) => {
     try{
       updateComment({
         variables:{ 

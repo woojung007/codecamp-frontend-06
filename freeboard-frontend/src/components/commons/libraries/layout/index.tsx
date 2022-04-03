@@ -10,11 +10,14 @@ import LayoutSidebar from './sidebar/index';
 
 const BodyWrapper = styled.div`
     display: flex;
+    width: 100%;
+    background-color: white;
+
 `
 
 const Body = styled.div`
     height: auto;
-    background-color: white;
+
 `
 
 interface ILayoutProps{
@@ -30,7 +33,6 @@ const HIDDEN_SIDEBAR = [
 
 export default function Layout(props: ILayoutProps){
     const router = useRouter()
-    console.log(router)
 
     const isHidden = HIDDEN_SIDEBAR.includes(router.asPath)
 
@@ -42,7 +44,7 @@ export default function Layout(props: ILayoutProps){
             <LayoutNavigation />
             <BodyWrapper>
             <div>
-            {!isHidden &&  <LayoutSidebar />}
+            {/* {!isHidden &&  <LayoutSidebar />} */}
             </div>
             <Body>{props.children}</Body>
             </BodyWrapper>

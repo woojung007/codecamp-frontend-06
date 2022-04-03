@@ -3,7 +3,6 @@ import Child2 from "../../src/components/commons/units/board/14-lifting-state-up
 import { useState } from 'react';
 
 export default function LiftingStateUpPage(){
-    
     const [count, setCount] = useState(0)
 
     //  방법 - 1
@@ -11,15 +10,11 @@ export default function LiftingStateUpPage(){
         setCount((prev) => prev + 1);
     }
 
-
     return(
         <div>
         <Child1 count={count} setCount={setCount}/>
             <div>=============================</div>
         <Child2 count={count} onClickCountUp={onClickCountUp}/>
         </div>
-
-
     )
-
 }

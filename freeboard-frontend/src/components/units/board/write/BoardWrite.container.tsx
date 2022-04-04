@@ -30,6 +30,25 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [isOpen, setIsOpen] = useState(false);
 
 
+//input 창 refactoring
+  const [Inputs, setInputs] = useState({
+      writer: "",
+      password: "",
+      title: "",
+      contents: "",
+      youtubeUrl: "",
+        zipcode:"",
+        address:"",
+        addressDetail:""
+  })
+
+
+  const onChangeInputs = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputs({
+      ...Inputs,
+      [event.target.id]: event.target.value
+    })
+  }
 
 
   // 입력값 보내기 & detail로 라우팅
@@ -72,7 +91,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
           boardId: router.query.boardId,
         },
       });
-      // console.log(router.query.boardId);
+    
       router.push(`/boards/${router.query.boardId}`);
     } catch (error) {
       // if (error instanceof Error) Modal.error(error.message);
@@ -81,118 +100,145 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const callGraphqlAPI = async () => {
 
-    if (writer === "") {
-      setWriterError("이름을 입력해 주세요");
-    } else {
-      setWriterError("");
-    }
+    // if (writer === "") {
+    //   setWriterError("이름을 입력해 주세요");
+    // } else {
+    //   setWriterError("");
+    // }
 
-    if (password === "") {
-      setPasswordError("비밀번호를 입력해주세요");
-    } else {
-      setPasswordError("");
-    }
+    // if (password === "") {
+    //   setPasswordError("비밀번호를 입력해주세요");
+    // } else {
+    //   setPasswordError("");
+    // }
 
-    if (title === "") {
-      setTitleError("제목을 입력해주세요");
-    } else {
-      setTitleError("");
-    }
+    // if (title === "") {
+    //   setTitleError("제목을 입력해주세요");
+    // } else {
+    //   setTitleError("");
+    // }
 
-    if (contents === "") {
-      setContentError("내용을 입력해주세요");
-    } else {
-      setContentError("");
-    }
+    // if (contents === "") {
+    //   setContentError("내용을 입력해주세요");
+    // } else {
+    //   setContentError("");
+    // }
 
     try {
-      const result = await createBoard({
+      const result = await createBoard({     
         variables: {
-          createBoardInput:{
-          writer,
-          password,
-          title,
-          contents,
-          youtubeUrl,
-          boardAddress:{
-            zipcode,
-            address,
-            addressDetail
+          createBoardInput: {
+            writer: Inputs.writer,
+            password:Inputs.password,
+            title: Inputs.title,
+            contents:Inputs.contents,
+            youtubeUrl:Inputs.youtubeUrl,
+            boardAddress:{
+              zipcode: Inputs.zipcode,
+              address: Inputs.address,
+              addressDetail:Inputs.addressDetail
+            }
           }
-        }}
+        },
       });
-      // console.log("result", result)
+      // console.log("Inputs", Inputs)
 
       if (writer !== "" && password !== "" && title !== "" && contents !== "") {
         Modal.success({content: "게시물 등록에 성공했습니다!! 상세페이지로 이동합니다!"})
       }
-
+    
       router.push(`/boards/${result.data.createBoard._id}`);
     } catch (error) {}
   };
 
-  const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
-    setWriter(event.target.value);
-
-    if (event.target.value && password && title && contents) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
-
-  const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-
-    if (
-      writer !== "" &&
-      event.target.value !== "" &&
-      title !== "" &&
-      contents
-    ) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
-
-  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-    if (
-      writer !== "" &&
-      password !== "" &&
-      event.target.value !== "" &&
-      contents
-    ) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
-
-  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
-    setContents(event.target.value);
-    if (
-      writer !== "" &&
-      password !== "" &&
-      title !== "" &&
-      event.target.value
-    ) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
 
 
-const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
-  setAddressDetail(event.target.value)
-}
+  // const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
+  //     setInputs({
+  //       ...inputs,
+  //       [event.target.id]: event.target.value
+  //     })
+    // if (event.target.id && password && title && contents) {
+    //   setIsActive(true);
+    // } else {
+    //   setIsActive(false);
+    // }
+  // };
 
 
-  const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
-    setYoutubeUrl(event.target.value);
-  }
+
+  // const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setInputs({
+  //     ...inputs,
+  //     [event.target.id]: event.target.value
+  //   })
+    
+
+  //   if (
+  //     writer !== "" &&
+  //     event.target.id !== "" &&
+  //     title !== "" &&
+  //     contents
+  //   ) {
+  //     setIsActive(true);
+  //   } else {
+  //     setIsActive(false);
+  //   }
+  // };
+
+  // const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setInputs({
+  //     ...inputs,
+  //     [event.target.id]: event.target.value
+  //   })
+    
+    // if (
+    //   writer !== "" &&
+    //   password !== "" &&
+    //   event.target.id !== "" &&
+    //   contents
+    // ) {
+    //   setIsActive(true);
+    // } else {
+    //   setIsActive(false);
+    // }
+  // };
+
+  // const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setInputs({
+  //     ...inputs,
+  //     [event.target.id]: event.target.value
+  //   })
+    
+    // if (
+    //   writer !== "" &&
+    //   password !== "" &&
+    //   title !== "" &&
+    //   event.target.id
+    // ) {
+    //   setIsActive(true);
+    // } else {
+    //   setIsActive(false);
+    // }
+//   };
+
+
+// const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
+//   setInputs({
+//     ...inputs,
+//     [event.target.id]: event.target.value
+//   })
+  
+// }
+
+
+  // const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setInputs({
+  //     ...inputs,
+  //     [event.target.id]: event.target.value
+  //   })
+    
+  // }
 
 
   //주소 modal창
@@ -218,12 +264,13 @@ const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
 
   return (
     <BoardWriteUI
-      onChangeWriter={onChangeWriter}
-      onChangePassword={onChangePassword}
-      onChangeTitle={onChangeTitle}
-      onChangeContents={onChangeContents}
-      onChangeAddressDetail={onChangeAddressDetail}
-      onChangeYoutubeUrl={onChangeYoutubeUrl}
+      onChangeInputs={onChangeInputs}
+      // onChangeWriter={onChangeWriter}
+      // onChangePassword={onChangePassword}
+      // onChangeTitle={onChangeTitle}
+      // onChangeContents={onChangeContents}
+      // onChangeAddressDetail={onChangeAddressDetail}
+      // onChangeYoutubeUrl={onChangeYoutubeUrl}
       callGraphqlAPI={callGraphqlAPI}
       onClickUpdate={onClickUpdate}
       writerError={writerError}

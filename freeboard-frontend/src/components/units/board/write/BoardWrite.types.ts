@@ -35,12 +35,13 @@ export interface ICreateBoardInput{
 
 //presenter
 export interface IBoardWriteUIProps{
-    onChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void
-    onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void
-    onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void
-    onChangeContents: (event: ChangeEvent<HTMLInputElement>) => void
-    onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void
-    onChangeYoutubeUrl:(event: ChangeEvent<HTMLInputElement>) => void
+    onChangeInputs:(event: ChangeEvent<HTMLInputElement>) => void
+    // onChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void
+    // onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void
+    // onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void
+    // onChangeContents: (event: ChangeEvent<HTMLInputElement>) => void
+    // onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void
+    // onChangeYoutubeUrl:(event: ChangeEvent<HTMLInputElement>) => void
     callGraphqlAPI: () => void
     onClickUpdate: () => void
     writerError: string

@@ -45,7 +45,6 @@ align-items: center;
 width: 100px;
 padding-bottom: 20px;
 float: right;
-background-color: yellow;
 
 `
 
@@ -70,8 +69,7 @@ export const InfoDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 25vw;
-  height: 60px;
+  width: 30vw;
   padding-right: 17px;
 `;
 
@@ -104,7 +102,7 @@ export const LinkIcon = styled(PaperClipOutlined)`
 margin-right: 30px;
 cursor: pointer;
 color: #BDBDBD;
-font-size: 50px;
+font-size: 35px;
 :hover{
   color: #000;
 }
@@ -114,8 +112,8 @@ font-size: 50px;
 export const LocationIcon = styled(EnvironmentOutlined)`
 cursor: pointer;
 color: #BDBDBD;
-font-size: 50px;
-:hover{
+font-size: 30px;
+&:hover{
   color: #000;
 }
 `;
@@ -169,7 +167,6 @@ export const BoardLike = styled.div`
   justify-content: space-between;
   width: 40vw;
   margin-bottom: 80px;
-  background-color: blueviolet;
 `;
 
 export const LikeDiv = styled.div`
@@ -179,14 +176,13 @@ export const LikeDiv = styled.div`
   align-items: center;
   width: 40vw;
   height: 10vh;
-  background-color: aliceblue;
 `;
 
 export const LikeIcon = styled(LikeFilled)`
   color: #ffd600;
   cursor: pointer;
-  width: 5em;
-  :hover{
+  font-size: 30px;
+  &:hover{
     
   }
 `;
@@ -204,10 +200,9 @@ export const LikeNum = styled.div`
 
 export const DisLikeIcon = styled(DislikeFilled)`
   color: #888;
+  font-size: 30px;
   cursor: pointer;
-  width: 5em;
-  height: 2em;
-  :hover{
+&:hover{
     color: black;
   }
 `;
@@ -219,7 +214,6 @@ export const DisLikeNum = styled.div`
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  text-align: center;
   color: #828282;
 `;
 

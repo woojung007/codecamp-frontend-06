@@ -5,11 +5,12 @@ import { CREATE_BOARD_COMMENT,FETCH_BOARD_COMMENTS, UPDATE_BOARD_COMMENT } from 
 import CommentWriteUI from "./BoardCommentWrite.presenter";
 import { useRouter } from "next/router";
 import {Modal} from 'antd'
+import { ICommentWrite } from './BoardCommentWrite.types';
 
 
 
 
-export default function CommentWrite(props: any) {
+export default function CommentWrite(props: ICommentWrite) {
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
   const [writer, setWriter] = useState("");
@@ -147,7 +148,9 @@ export default function CommentWrite(props: any) {
       handleChange={handleChange}
       value={value}
       isEdit={props.isEdit}
+      setIsEdit={props.setIsEdit}
       onClickUpdate={onClickUpdate}
+      el={props.el}
     />
   );
 }

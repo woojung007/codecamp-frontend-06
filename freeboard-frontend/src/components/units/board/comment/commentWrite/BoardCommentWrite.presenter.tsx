@@ -19,7 +19,7 @@ export default function CommentWriteUI(props: ICommentWriteUIProps) {
                 type="text"
                 placeholder="작성자"
                 value={props.writer}
-                // defaultValue={props.data?.fetchBoardComments.writer}
+                defaultValue={props.el?.writer || ""}
 
               />
               <S.CommentInput
@@ -39,7 +39,7 @@ export default function CommentWriteUI(props: ICommentWriteUIProps) {
                 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은
                 게시자에게 있습니다."
                 value={props.contents}
-                // defaultValue={props.data?.fetchBoardComments.contents}
+                defaultValue={props.el?.contents}
               />
 
               <S.CommentCountDiv>

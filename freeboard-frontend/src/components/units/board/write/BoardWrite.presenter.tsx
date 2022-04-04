@@ -17,7 +17,8 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <div>
             <S.SmallTitle>작성자</S.SmallTitle>
             <S.NamePassInput
-              onChange={props.onChangeWriter}
+              onChange={props.onChangeInputs}
+              id="writer"
               type="text"
               placeholder="이름을 적어주세요."
               defaultValue={props.data?.fetchBoard.writer}
@@ -28,7 +29,8 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <div>
             <S.SmallTitle>비밀번호</S.SmallTitle>
             <S.NamePassInput
-              onChange={props.onChangePassword}
+              onChange={props.onChangeInputs}
+              id="password"
               type="password"
               placeholder="비밀번호를 입력해주세요."
             />
@@ -38,7 +40,8 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
 
         <S.SmallTitle>제목</S.SmallTitle>
         <S.TitleInput
-          onChange={props.onChangeTitle}
+          onChange={props.onChangeInputs}
+          id="title"
           type="text"
           placeholder="제목을 작성해주세요."
           defaultValue={props.data?.fetchBoard.title}
@@ -47,7 +50,8 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
 
         <S.SmallTitle>내용</S.SmallTitle>
         <S.ContentInput
-          onChange={props.onChangeContents}
+          onChange={props.onChangeInputs}
+          id="contents"
           type="text"
           placeholder="내용을 작성해주세요."
           defaultValue={props.data?.fetchBoard.contents}
@@ -60,6 +64,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <S.AdDiv>
             <S.AdInput 
             readOnly
+            id="zipcode"
             value={props.zipcode ||
             props.data?.fetchBoard.boardAddress?.zipcode ||
             ""} 
@@ -81,13 +86,13 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
 
           </S.AdDiv>
 
-          <S.TitleInput readOnly value={props.address}  type="text" />
-          <S.TitleInput  onChange={props.onChangeAddressDetail} type="text" />
+          <S.TitleInput id="address" readOnly value={props.address}  type="text" />
+          <S.TitleInput id="addressDetail" onChange={props.onChangeInputs} type="text" />
         </S.AdContainer>
 
         <S.SmallTitle>유투브</S.SmallTitle>
-        <S.TitleInput type="text" placeholder="링크를 복사해 주세요." 
-        onChange={props.onChangeYoutubeUrl}
+        <S.TitleInput id="youtubeUrl" type="text" placeholder="링크를 복사해 주세요." 
+        onChange={props.onChangeInputs}
         defaultValue={props.data?.fetchBoard.youtubeUrl || ""}/>
 
         <S.SmallTitle>사진 첨부</S.SmallTitle>

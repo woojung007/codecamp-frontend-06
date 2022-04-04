@@ -2,9 +2,12 @@ import { ChangeEvent, MouseEvent } from "react";
 import { Rating } from '../commentList/BoardCommentList.styles';
 
 //container
-// export interface ICommentWriteProps {
+export interface ICommentWrite {
+  el: any
+  isEdit: boolean
+  setIsEdit:() => void
 
-// }
+}
 
 
 export interface ICreateBoardCommentInput {
@@ -39,6 +42,8 @@ export interface ICommentWriteUIProps {
   value: number
   handleChange: any
   isEdit: boolean
+  setIsEdit:() => void
+  el: any
 }
 
 

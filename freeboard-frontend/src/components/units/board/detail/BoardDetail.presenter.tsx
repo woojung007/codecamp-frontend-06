@@ -12,12 +12,17 @@ import { Tooltip, Button } from 'antd';
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
 
-  const text = <span> {props.data?.fetchBoard.boardAddress.address}<br />
-                    {props.data?.fetchBoard.boardAddress.addressDetail}</span>;
+  const text = <span> {props.data?.fetchBoard?.boardAddress?.address}<br />
+                    {props.data?.fetchBoard?.boardAddress?.addressDetail}</span>;
 
 
-  const buttonWidth = 60;
-  const color ='gold'
+  const onClickLink = () => {
+    alert("링크입니다")
+  }
+
+  const onClickLocation = () => {
+    alert("위치입니다")
+  }
 
 
   return (
@@ -37,11 +42,11 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
                 </s.InfoDiv>
               </s.HeaderDiv>
               <s.HeaderTopDiv>
-                  <Button  icon={<s.LinkIcon  style={{ width: buttonWidth, marginRight: 10, border: 0}}></s.LinkIcon> }></Button>
+                  <s.LinkIcon onClick={onClickLink}/>
 
-              <s.LocationDiv color={color} key={color}>
+              <s.LocationDiv >
                 <Tooltip placement="topRight" title={text}>
-                  <Button  icon={<s.LocationIcon  style={{ width: buttonWidth, marginRight: 10 }}></s.LocationIcon> }></Button>
+                  <s.LocationIcon  onClick={onClickLocation}/>
                 </Tooltip>
               </s.LocationDiv>
             </s.HeaderTopDiv>

@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Wrapper = styled.div`
     background-color: pink;
-    height: 500px;
+    height: 50vh;
 
 
 `
@@ -16,11 +16,12 @@ const Wrapper = styled.div`
 
 const SimpleSlider = styled(Slider)`
     .slick-slide div{
-        outline: none;
         cursor: pointer;
-        height: 500px;
+        height: 50vh;
+        background: #dbdbdb;
         background-image: url("/images/banner.jpeg") ;
-        background-size: cover;
+        background-size: contain;
+        background-position: center;
         background-repeat: no-repeat;
     }
     

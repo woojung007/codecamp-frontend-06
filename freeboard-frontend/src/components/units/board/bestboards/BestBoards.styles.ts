@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-
+import {HeartOutlined} from '@ant-design/icons'
 
 
 //Best
@@ -39,7 +39,7 @@ cursor: pointer;
 
 export const BestBoardPic = styled.div`
 width: 100%;
-height: 20vh;
+height: 18vh;
 background: url("/images/board-img.jpeg") no-repeat;
 background-size: cover;
 border-radius: 20px 20px 0 0;
@@ -48,8 +48,8 @@ border-radius: 20px 20px 0 0;
 
 export const BestBoardBottom = styled.div`
 display: flex;
-height: 20vh ;
-padding: 4%;
+height: 16vh ;
+padding: 6%;
 `
 
 export const BestBottomLeft = styled.div`
@@ -104,16 +104,15 @@ padding-left: 2%;
 
 export const BestBoardDate = styled.div`
 width: 60vw;
-padding-top: 10px;
+padding-top: 15px;
 font-weight: 400;
 font-size: 12px;
 color: #828282;
 `
 
-export const BestBoardLike = styled.div`
-width: 100%;
-height: 50%;
-background-color: brown;
+export const Heart = styled(HeartOutlined)`
+font-size: 30px;
+color: #000;
 `
 
 export const BestBoardLikeCount = styled.div`
@@ -121,6 +120,7 @@ text-align: center;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
+padding-top: 5px;
 `
 
 

@@ -19,14 +19,14 @@ export default function BoardBestListUI(props: IBoardBestListUI) {
                     <S.BestBottomLeft>
                       <S.BestBoardTitle>{el.title}</S.BestBoardTitle>
                       <S.WriterDiv>
-                        <S.BestBoardUser></S.BestBoardUser>
+                        <S.BestBoardUser> </S.BestBoardUser>
                         <S.BestBoardWriter>{el.writer}</S.BestBoardWriter>
                       </S.WriterDiv>
                       <S.BestBoardDate>Date : {el.createdAt.slice(0,10)}</S.BestBoardDate>
                     </S.BestBottomLeft>
 
                     <S.BestBottomRight>
-                      <S.BestBoardLike></S.BestBoardLike>
+                        <S.Heart />
                       <S.BestBoardLikeCount>{el.likeCount}</S.BestBoardLikeCount>
                     </S.BestBottomRight>
                   </S.BestBoardBottom>

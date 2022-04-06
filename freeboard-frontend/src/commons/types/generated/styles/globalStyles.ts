@@ -12,7 +12,7 @@ export const globalStyles = css`
 
 
     @font-face {
-        font-family: "myFont";
+        font-family: "FontGame";
         src: url(/fonts/scifibit.ttf);
     }
 `

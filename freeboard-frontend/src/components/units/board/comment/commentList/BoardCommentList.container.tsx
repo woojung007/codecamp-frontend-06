@@ -1,23 +1,23 @@
-//container
+// container
 import CommentListUI from "./BoardCommentList.presenter";
 import { useQuery, useMutation } from '@apollo/client';
 import { FETCH_BOARD_COMMENTS, DELETE_BOARD_COMMENT} from "./BoardCommentList.queries";
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { MouseEvent, ChangeEvent } from "react";
+import { MouseEvent, ChangeEvent, useState } from "react";
 import {ICommentListProps} from './BoardCommentList.types'
 import { Modal } from 'antd';
+import { IMutation, IMutationDeleteBoardCommentArgs, IQuery, IQueryFetchBoardCommentsArgs } from '../../../../../commons/types/generated/types';
 
 
 
 export default function CommentList(props: ICommentListProps){
   const router = useRouter()
-  const [deleteComment] = useMutation(DELETE_BOARD_COMMENT)
   const [isOpen, setIsOpen] = useState(false);
   const [password, setPassword] = useState();
   const [commentId, setCommentId] = useState("");
-  
-  const {data, fetchMore} = useQuery(FETCH_BOARD_COMMENTS,{
+
+  const [deleteComment] = useMutation<Pick<IMutation,'deleteBoardComment'>,IMutationDeleteBoardCommentArgs>(DELETE_BOARD_COMMENT)
+  const {data, fetchMore} = useQuery<Pick<IQuery, 'fetchBoardComments'>,IQueryFetchBoardCommentsArgs>(FETCH_BOARD_COMMENTS,{
       variables:{
         boardId: String(router.query.boardId)
         }
@@ -49,7 +49,7 @@ export default function CommentList(props: ICommentListProps){
   
 
 
-    //infinite-scroll
+    // infinite-scroll
     const onLoadMore = () => {
       if(!data) return;
 

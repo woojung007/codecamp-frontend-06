@@ -3,15 +3,16 @@ import { useRouter } from 'next/router'
 import { MouseEvent } from 'react'
 import { useQuery } from '@apollo/client';
 import {FETCH_BOARDS_QUERIES} from './BoardList.queries'
+import { IQuery, IQueryFetchBoardArgs } from '../../../../commons/types/generated/types';
 
 
 
 
-export default function BoardList(props){
+export default function BoardList(props: any){
 
     const router = useRouter()
 
-    const {data} = useQuery(FETCH_BOARDS_QUERIES)
+    const {data} = useQuery<Pick<IQuery, 'fetchBoards'>,IQueryFetchBoardArgs>(FETCH_BOARDS_QUERIES)
 
 
     const moveToWrite = () => {
@@ -29,7 +30,7 @@ export default function BoardList(props){
 
     return(
         <BoardListUI
-        data = {props.data}
+        data = {data}
         moveToWrite = {moveToWrite}
         onClickMoveToBoardDetail={onClickMoveToBoardDetail}
         dataRefetchBoards={props.dataRefetchBoards}

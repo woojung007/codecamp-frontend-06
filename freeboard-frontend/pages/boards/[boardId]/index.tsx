@@ -1,4 +1,4 @@
-//상세보기 페이지
+// 상세보기 페이지
 
 import CommentList from "../../../src/components/units/board/comment/commentList/BoardCommentList.container";
 import CommentWrite from "../../../src/components/units/board/comment/commentWrite/BoardCommentWrite.container";

@@ -1,8 +1,7 @@
 import styled from '@emotion/styled'
 import {HeartOutlined} from '@ant-design/icons'
 
-
-//Best
+// Best
 export const BestDiv = styled.div`
 display: flex;
 flex-direction: column;
@@ -27,7 +26,7 @@ justify-content: space-between;
 
 `
 
-//bestBoards 내부
+// bestBoards 내부
 
 export const BestBoards = styled.div`
 width: 16vw;
@@ -88,9 +87,7 @@ width: 100%;
 
 
 export const BestBoardUser = styled.div`
-background-color: green;
 width: 80px;
-height: 30px;
 `
 
 
@@ -99,7 +96,7 @@ width: 25vw;
 font-weight: 400;
 font-size: 16px;
 line-height: 30px;
-padding-left: 2%;
+padding-left: 3%;
 `
 
 export const BestBoardDate = styled.div`

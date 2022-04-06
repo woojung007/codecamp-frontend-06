@@ -1,7 +1,8 @@
 // import { getDate } from "../../../commons/libraries/utils";
 import * as S from "./BestBoards.styles";
 import { IBoardBestListUI } from './BestBoards.types';
-
+import { Avatar} from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 
 
@@ -19,7 +20,9 @@ export default function BoardBestListUI(props: IBoardBestListUI) {
                     <S.BestBottomLeft>
                       <S.BestBoardTitle>{el.title}</S.BestBoardTitle>
                       <S.WriterDiv>
-                        <S.BestBoardUser> </S.BestBoardUser>
+                        <S.BestBoardUser> 
+                        <Avatar size="large" style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+                        </S.BestBoardUser>
                         <S.BestBoardWriter>{el.writer}</S.BestBoardWriter>
                       </S.WriterDiv>
                       <S.BestBoardDate>Date : {el.createdAt.slice(0,10)}</S.BestBoardDate>

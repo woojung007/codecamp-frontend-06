@@ -1,67 +1,67 @@
-import styled from '@emotion/styled'
+import { Menu, Switch } from 'antd';
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+
+const { SubMenu } = Menu;
+
+
+export default function SiderMenu() {
+
+    const [theme, setTheme] = useState('dark');
+    const [current, setCurrent] = useState(1);
 
 
 
-const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 70px;
-background-color: black;
-`
-const NavWrapper = styled.div`
-display: flex;
-justify-content: space-between;
-width: 50vw;
-`
+  const changeTheme = (value:any) => {
+    setTheme({
+value ? 'dark' : 'light',
+    });
+  };
 
-const Nav = styled.div`
-color: #BDBDBD;
-padding: 0 30px;
-:hover{
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
+  const handleClick = (e:any) => {
+    setCurrent(e.key) 
 
-}
-`
+  };
 
-const NavSpan = styled.div`
-color: #BDBDBD;
-font-weight: lighter;
-`
+return (
+    <div>
+      <Switch
+        checked={theme === 'dark'}
+        onChange={changeTheme}
+        checkedChildren="Dark"
+        unCheckedChildren="Light"
+      />
+      <br />
+      <br />
+<Menu
+theme={theme}
+onClick={handleClick}
+style={{ width: 256 }}
+defaultOpenKeys={['sub1']}
+selectedKeys={[current]}
+mode="inline"
+>
+<SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
+  <Menu.Item key="1">Option 1</Menu.Item>
+  <Menu.Item key="2">Option 2</Menu.Item>
+  <Menu.Item key="3">Option 3</Menu.Item>
+  <Menu.Item key="4">Option 4</Menu.Item>
+</SubMenu>
+<SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
+  <Menu.Item key="5">Option 5</Menu.Item>
+  <Menu.Item key="6">Option 6</Menu.Item>
+  <SubMenu key="sub3" title="Submenu">
+    <Menu.Item key="7">Option 7</Menu.Item>
+    <Menu.Item key="8">Option 8</Menu.Item>
+  </SubMenu>
+</SubMenu>
+<SubMenu key="sub4" icon={<SettingOutlined />} title="Navigation Three">
+  <Menu.Item key="9">Option 9</Menu.Item>
+  <Menu.Item key="10">Option 10</Menu.Item>
+  <Menu.Item key="11">Option 11</Menu.Item>
+  <Menu.Item key="12">Option 12</Menu.Item>
+</SubMenu>
+</Menu>
+</div>
+)
 
-export default function LayoutNavigation(){
-
-
-
-    return (
-        <Wrapper>
-
-            <NavWrapper>
-                
-                <Nav>
-                    자유게시판
-                </Nav>
-
-                <NavSpan> | </NavSpan>
-
-                <Nav>
-                    중고마켓
-                </Nav>
-
-                <NavSpan> | </NavSpan>
-
-                <Nav>
-                    마이페이지
-                </Nav>
-            </NavWrapper>
-
-        </Wrapper>
-
-    )
-    
-    
-
-}

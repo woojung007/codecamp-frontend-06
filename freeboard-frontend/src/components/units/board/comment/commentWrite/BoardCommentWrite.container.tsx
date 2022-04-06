@@ -6,6 +6,7 @@ import CommentWriteUI from "./BoardCommentWrite.presenter";
 import { useRouter } from "next/router";
 import {Modal} from 'antd'
 import { ICommentWrite } from './BoardCommentWrite.types';
+import { IMutationUpdateBoardArgs, IMutation, IMutationCreateBoardCommentArgs } from '../../../../../commons/types/generated/types';
 
 
 
@@ -19,8 +20,8 @@ export default function CommentWrite(props: ICommentWrite) {
   const [value, setRating] = useState(5);
 
   
-  const [updateComment] = useMutation(UPDATE_BOARD_COMMENT)
-  const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
+  const [updateComment] = useMutation<Pick<IMutation,'updateBoardComment'>,IMutationUpdateBoardArgs>(UPDATE_BOARD_COMMENT)
+  const [createBoardComment] = useMutation<Pick<IMutation,'createBoardComment'>,IMutationCreateBoardCommentArgs>(CREATE_BOARD_COMMENT);
 
     const handleChange = (value:any) => {
       setRating(value);

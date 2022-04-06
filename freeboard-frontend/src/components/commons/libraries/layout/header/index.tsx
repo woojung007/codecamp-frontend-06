@@ -3,37 +3,44 @@ import styled from '@emotion/styled'
 
 
 const Wrapper = styled.div`
-    height: 100px;
+    height: 70px;
     background-color: black;
     display: flex;
     justify-content: flex-end;
-    padding-top: 30px;
-    padding-right: 30px;
+    align-items: center;
+    padding-right: 6%;
+    margin: 0;
+
 `
 
 const Login = styled.div`
-    background-color: #fff;
+    color: #fff;
     width: 80px;
-    height: 50px;
+    height: 30px;
     text-align: center;
     border-radius: 5px;
     padding-top: 10px;
     margin-right: 20px;
     cursor: pointer;
     :hover{
-        
+        font-weight: bold;
+        color: crimson;
     }
 
 `
 
 const Signup = styled.div`
-    background-color: #fff;
+    color: #fff;
     width: 80px;
-    height: 50px;
+    height: 30px;
     text-align: center;
     border-radius: 5px;
     padding-top: 10px;
     cursor: pointer;
+    :hover{
+        font-weight: bold;
+        color: crimson;
+    }
 
 `
 

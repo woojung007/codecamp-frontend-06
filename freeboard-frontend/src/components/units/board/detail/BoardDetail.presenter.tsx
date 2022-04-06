@@ -2,9 +2,9 @@ import { getDate } from "../../../commons/libraries/utils";
 import * as s from "./BoardDetail.styles";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
 import ReactPlayer from 'react-player'
-import { Avatar } from 'antd';
+import { Avatar, Tooltip } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { Tooltip, Button } from 'antd';
+
 
 
 
@@ -32,7 +32,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
           <s.Header>
             <s.HeaderDiv>
                 <s.InfoDiv>
-                  <Avatar size="large" icon={<UserOutlined />} />
+                <Avatar size="large" style={{ backgroundColor: '#888' }} icon={<UserOutlined />} />
                   <s.InfoText>
                     <s.Writer>{props.data?.fetchBoard.writer}</s.Writer>
                     <s.Date>

@@ -1,5 +1,3 @@
-import 'antd/dist/antd.css';
-import '../styles/globals.css'
 import {ApolloClient, ApolloProvider,InMemoryCache} from '@apollo/client'
 import { AppProps } from 'next/app';
 import { Global } from '@emotion/react';

@@ -1,6 +1,9 @@
 {
     "cSpell.ignoreWords": [
+        "Firestore",
         "aliceblue",
-        "antd"
+        "antd",
+        "datas",
+        "entitites"
     ]
 }

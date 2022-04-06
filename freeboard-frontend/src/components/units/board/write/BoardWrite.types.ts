@@ -1,15 +1,13 @@
-import { ObjectTypeExtensionNode } from "graphql"
 import { ChangeEvent } from "react" 
 
 
 
-//container
+// container
 export interface IBoardWriteProps{
     isEdit: boolean
     data?: any
+    boardId: any
 }
-
-
 
 
 export interface IUpdateVariables{
@@ -33,15 +31,15 @@ export interface ICreateBoardInput{
 
 
 
-//presenter
+// presenter
 export interface IBoardWriteUIProps{
     onChangeInputs:(event: ChangeEvent<HTMLInputElement>) => void
-    // onChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void
-    // onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void
-    // onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void
+    onChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void
+    onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void
+    onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void
     // onChangeContents: (event: ChangeEvent<HTMLInputElement>) => void
-    // onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void
-    // onChangeYoutubeUrl:(event: ChangeEvent<HTMLInputElement>) => void
+    onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void
+    onChangeYoutubeUrl:(event: ChangeEvent<HTMLInputElement>) => void
     callGraphqlAPI: () => void
     onClickUpdate: () => void
     writerError: string
@@ -64,7 +62,7 @@ export interface IBoardWriteUIProps{
 }
 
 
-//style
+// style
 
 export interface IRegisterBtnProps{
     isActive: boolean

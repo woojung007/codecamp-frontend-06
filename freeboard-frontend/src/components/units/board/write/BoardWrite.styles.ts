@@ -65,7 +65,7 @@ height: 52px;
 margin-bottom: 10px;
 `
 
-export const ContentInput = styled.input`
+export const ContentInput = styled.textarea`
 width: 996px;
 height: 480px;
 margin-bottom: 10px;

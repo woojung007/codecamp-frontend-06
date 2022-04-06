@@ -1,4 +1,4 @@
-//프레젠터
+// 프레젠터
 import * as S from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
 import DaumPostcode from 'react-daum-postcode';
@@ -50,9 +50,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
 
         <S.SmallTitle>내용</S.SmallTitle>
         <S.ContentInput
-          onChange={props.onChangeInputs}
           id="contents"
-          type="text"
           placeholder="내용을 작성해주세요."
           defaultValue={props.data?.fetchBoard.contents}
         />

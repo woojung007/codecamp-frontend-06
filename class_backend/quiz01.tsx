@@ -11,7 +11,7 @@ export default function OpenAPIQuizPage(){
 
     useEffect(()=>{
         const dog = async() => {
-            const result = await axios.get("https://dog.ceo/dog-api/")
+            const result = await axios.get("https://dog.ceo/api/breeds/image/random")
             setDogUrl(result.data.message)
         };
         dog()

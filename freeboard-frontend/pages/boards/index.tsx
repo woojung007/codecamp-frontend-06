@@ -1,7 +1,6 @@
 import BoardList from "../../src/components/units/board/list/BoardList.container";
 import BoardBestList from '../../src/components/units/board/bestboards/BestBoards.container';
-import { gql } from '@apollo/client'
-import { useQuery } from '@apollo/client'
+import { gql,useQuery } from '@apollo/client'
 import PaginationPage from '../../src/components/commons/paginations/01-simple/Pagination.container';
 
 

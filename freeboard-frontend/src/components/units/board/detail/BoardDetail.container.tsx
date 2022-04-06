@@ -5,6 +5,7 @@ import { FETCH_BOARD, LIKE_BOARD,DISLIKE_BOARD, DELETE_BOARD } from "./BoardDeta
 import {IDeleteVariables} from "./BoardDetail.types";
 import { MouseEvent } from "react";
 import {Modal} from 'antd'
+import { IMutation, IMutationLikeBoardArgs, IMutationDislikeBoardArgs } from '../../../../commons/types/generated/types';
 
 
 export default function BoardDetail() {
@@ -16,8 +17,8 @@ export default function BoardDetail() {
 
   console.log("data",data)
 
-  const [callLikeCount] = useMutation(LIKE_BOARD);
-  const [callDislikeCount] = useMutation(DISLIKE_BOARD);
+  const [callLikeCount] = useMutation<Pick<IMutation, 'likeBoard'>, IMutationLikeBoardArgs>(LIKE_BOARD);
+  const [callDislikeCount] = useMutation<Pick<IMutation, 'dislikeBoard'>,IMutationDislikeBoardArgs>(DISLIKE_BOARD);
   const [deleteBoard] = useMutation(DELETE_BOARD);
 
 

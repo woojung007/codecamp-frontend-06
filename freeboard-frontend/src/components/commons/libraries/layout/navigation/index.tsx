@@ -1,67 +1,58 @@
-import { Menu, Switch } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-import { useState } from 'react';
-
-const { SubMenu } = Menu;
-
-
-export default function SiderMenu() {
-
-    const [theme, setTheme] = useState('dark');
-    const [current, setCurrent] = useState(1);
+import { useRouter } from "next/router";
+import { MouseEvent,Fragment } from "react";
+import styled from "@emotion/styled";
 
 
 
-  const changeTheme = (value:any) => {
-    setTheme({
-value ? 'dark' : 'light',
-    });
+const NAVIGATION_MENUS = [
+  { name: "파이어베이스게시판", page: "/myfirebase" },
+  { name: "라이브강아지", page: "/openapis" },
+  { name: "라이브게시판", page: "/boards" },
+  { name: "라이브상품", page: "/markets" },
+  { name: "마이페이지", page: "/mypages" },
+];
+
+
+
+
+const Wrapper = styled.div`
+  height: 64px;
+  background-color: #5729ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+`;
+
+const MenuItem = styled.div`
+  margin: 0px 60px;
+  cursor: pointer;
+
+  :hover {
+    color: orange;
+  }
+`;
+
+
+
+export default function Navigation() {
+  const router = useRouter();
+
+  const onClickMenu = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target instanceof Element) router.push(event.target.id);
   };
 
-  const handleClick = (e:any) => {
-    setCurrent(e.key) 
-
-  };
-
-return (
-    <div>
-      <Switch
-        checked={theme === 'dark'}
-        onChange={changeTheme}
-        checkedChildren="Dark"
-        unCheckedChildren="Light"
-      />
-      <br />
-      <br />
-<Menu
-theme={theme}
-onClick={handleClick}
-style={{ width: 256 }}
-defaultOpenKeys={['sub1']}
-selectedKeys={[current]}
-mode="inline"
->
-<SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-  <Menu.Item key="1">Option 1</Menu.Item>
-  <Menu.Item key="2">Option 2</Menu.Item>
-  <Menu.Item key="3">Option 3</Menu.Item>
-  <Menu.Item key="4">Option 4</Menu.Item>
-</SubMenu>
-<SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-  <Menu.Item key="5">Option 5</Menu.Item>
-  <Menu.Item key="6">Option 6</Menu.Item>
-  <SubMenu key="sub3" title="Submenu">
-    <Menu.Item key="7">Option 7</Menu.Item>
-    <Menu.Item key="8">Option 8</Menu.Item>
-  </SubMenu>
-</SubMenu>
-<SubMenu key="sub4" icon={<SettingOutlined />} title="Navigation Three">
-  <Menu.Item key="9">Option 9</Menu.Item>
-  <Menu.Item key="10">Option 10</Menu.Item>
-  <Menu.Item key="11">Option 11</Menu.Item>
-  <Menu.Item key="12">Option 12</Menu.Item>
-</SubMenu>
-</Menu>
-</div>
-)
-
+  return (
+    <Wrapper>
+      {NAVIGATION_MENUS.map((el) => (
+        <Fragment key={el.page}>
+          <MenuItem id={el.page} onClick={onClickMenu}>
+            {el.name}
+          </MenuItem>
+        </Fragment>
+      ))}
+    </Wrapper>
+  );
+}

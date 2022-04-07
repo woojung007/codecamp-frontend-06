@@ -39,7 +39,7 @@ export default function GraphqlMutationPage(){
     }
 
     return (
-        <div>  {/*빈태그 - 프래그먼트 */}
+        <div>  {/* 빈태그 - 프래그먼트 */}
             작성자 : <input type = "text"  onChange={onChangeWriter} /><br  />
             제목 :  <input type = "text"  onChange={onChangeTitle}/><br  />
             내용 :  <input type = "text" onChange={onChangeContents} /><br  />

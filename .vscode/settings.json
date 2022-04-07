@@ -4,6 +4,7 @@
         "aliceblue",
         "antd",
         "datas",
-        "entitites"
+        "entitites",
+        "typeorm"
     ]
 }

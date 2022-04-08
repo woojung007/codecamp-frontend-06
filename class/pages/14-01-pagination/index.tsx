@@ -26,7 +26,7 @@ export default function MapBoardPage(){
 
     const {data, refetch} = useQuery(FETCH_BOARDS)
 
-    const onClickPage = (event) => {
+    const onClickPage = (event:any) => {
         refetch({page: Number(event.target.id)})
         
     }

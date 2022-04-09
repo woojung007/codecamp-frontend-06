@@ -1,4 +1,4 @@
-//container
+// container
 import { ChangeEvent, MouseEvent , useState  } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_BOARD_COMMENT,FETCH_BOARD_COMMENTS, UPDATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";

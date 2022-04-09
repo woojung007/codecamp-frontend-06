@@ -2,7 +2,7 @@ import {MouseEvent, ChangeEvent} from 'react'
 
 
 
-//container
+// container
 export interface ICommentListProps{
   boardId: string
   value?: any
@@ -11,17 +11,15 @@ export interface ICommentListProps{
 
 
 
-//presenter
+// presenter
 export interface ICommentListUIProps{
   data?: any;
   id?: any
-  onClickEdit: () => void
   onClickDeleteComment: (event: MouseEvent<HTMLButtonElement>) => void
-  showModal: (event: any) => void
-  onClickAlert: (event: MouseEvent<HTMLDivElement>) => void
+  showModal: any
   handleCancel: () => void
   isOpen: boolean
-  onChangePassword: (event: ChangeEvent<HTMLButtonElement>) => void
+  onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void
   onLoadMore: () => void
   
   }

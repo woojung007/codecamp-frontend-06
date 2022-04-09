@@ -31,7 +31,7 @@ export default function BoardDetail() {
               query: FETCH_BOARD,
               variables: {boardId: String(router.query.boardId) }
             }]
-      }),
+      })
       Modal.success({content: "게시글을 좋아합니다!"})
     } catch (error) {
       if (error instanceof Error) alert(error.message);
@@ -47,7 +47,7 @@ export default function BoardDetail() {
             query: FETCH_BOARD,
             variables: {boardId: String(router.query.boardId) }
           }]
-    }),
+    })
       Modal.warning({content: "게시글을 싫어합니다!!"})
     } catch (error) {}
   };

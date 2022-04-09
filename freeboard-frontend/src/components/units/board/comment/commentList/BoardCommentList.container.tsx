@@ -13,7 +13,7 @@ import { IMutation, IMutationDeleteBoardCommentArgs, IQuery, IQueryFetchBoardCom
 export default function CommentList(props: ICommentListProps){
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false);
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const [commentId, setCommentId] = useState("");
 
   const [deleteComment] = useMutation<Pick<IMutation,'deleteBoardComment'>,IMutationDeleteBoardCommentArgs>(DELETE_BOARD_COMMENT)
@@ -28,10 +28,9 @@ export default function CommentList(props: ICommentListProps){
 
 
 
-    const onClickDeleteComment =  (event: MouseEvent<HTMLButtonElement>) => {
-      // console.log("commentId", router)
+    const onClickDeleteComment =  async(event: MouseEvent<HTMLButtonElement>) => {
       try{
-          deleteComment({
+          await deleteComment({
               variables:{password: password, boardCommentId: commentId},
               refetchQueries: [
                 { query: FETCH_BOARD_COMMENTS,
@@ -42,7 +41,7 @@ export default function CommentList(props: ICommentListProps){
             Modal.success({content:"댓글이 삭제되었습니다."})
             setIsOpen(false);
         }catch(error:any){
-          alert(error.message)
+          Modal.error({content:"삭제 실패했습니다."})
         }
       }
     
@@ -58,7 +57,7 @@ export default function CommentList(props: ICommentListProps){
             boardId: String(router.query.boardId),
             page : Math.ceil(data.fetchBoardComments.length / 10) + 1},
           updateQuery: (prev, { fetchMoreResult }) => {
-              if(!fetchMoreResult.fetchBoardComments)
+              if(!fetchMoreResult?.fetchBoardComments)
                   return {fetchBoardComments: [...prev.fetchBoardComments]};
             return {
               fetchBoardComments:  [...prev.fetchBoardComments, ...fetchMoreResult.fetchBoardComments]
@@ -70,11 +69,6 @@ export default function CommentList(props: ICommentListProps){
 
 
 
-    const onClickAlert = (event: MouseEvent<HTMLDivElement>) => {
-      Modal.info({content:`${event.currentTarget.id}님이 작성한 글입니다.`})
-    }
-      
-
     const showModal = (event:any) => {
       setIsOpen(true);
       setCommentId(event.target.id)
@@ -85,7 +79,7 @@ export default function CommentList(props: ICommentListProps){
     };
 
 
-    const onChangePassword = (event: ChangeEvent<HTMLButtonElement>) => {
+    const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
       setPassword(event.target.value)
     }
 
@@ -98,7 +92,6 @@ export default function CommentList(props: ICommentListProps){
     data={data}
     onClickDeleteComment={onClickDeleteComment}
     showModal={showModal}
-    onClickAlert={onClickAlert}
     handleCancel={handleCancel}
     isOpen={isOpen}
     onChangePassword={onChangePassword}

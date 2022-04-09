@@ -84,7 +84,7 @@ export default function UploadFilePage(props:IUploadFilePage) {
                 + <br /> Upload
             </UploadButton>
 
-            <UpImage  defaultValue={`https://storage.googleapis.com/${props.imageUpload}` || ""}/>
+            <UpImage  src={`https://storage.googleapis.com/${props.imageUpload}`}/>
 
         </Wrapper>
     )

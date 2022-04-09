@@ -140,7 +140,7 @@ export const BoardTitle = styled.div`
   padding: 80px 0 40px 0;
 `;
 
-export const BoardImage = styled.div`
+export const BoardImage = styled.img`
   width: 996px;
   height: 480px;
   background-color: aliceblue;

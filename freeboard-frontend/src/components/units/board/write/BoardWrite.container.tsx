@@ -19,7 +19,7 @@ import { IMutation, IMutationCreateBoardArgs, IMutationUpdateBoardArgs } from '.
 export default function BoardWrite(props: IBoardWriteProps) {
   const [isActive, setIsActive] = useState(false);
   const router = useRouter();
-  const [imageUpload, setImageUpload] = useState<string | undefined>("")
+  const [imageUpload, setImageUpload] = useState("")
 
 
   const [writer, setWriter] = useState("");
@@ -74,7 +74,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
               zipcode,
               address,
               addressDetail: addressDetail
-            }
+            },
+            images:[imageUpload]
           },
           password: password,
           boardId: String(router.query.boardId),
@@ -137,7 +138,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
         Modal.success({content: "게시물 등록에 성공했습니다!! 상세페이지로 이동합니다!"})
       }
     
-      router.push(`/boards/${result.data.createBoard._id}`);
+      router.push(`/boards/${result.data?.createBoard._id}`);
     } catch (error) {}
   };
 
@@ -257,7 +258,7 @@ const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
       handleCancel={handleCancel}
       handleComplete={handleComplete}
       showModal={showModal}
-      
+
       isOpen={isOpen}
       zipcode={zipcode}
       address={address}

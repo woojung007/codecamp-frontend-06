@@ -1,7 +1,7 @@
-//프레젠터
+// 프레젠터
 import * as S from "./BoardCommentList.styles";
 import {ICommentListUIProps} from "./BoardCommentList.types";
-import { Modal, Rate } from 'antd'
+import { Modal} from 'antd'
 import InfiniteScroll from 'react-infinite-scroller';
 import BoardCommentItem from "./index";
 
@@ -22,12 +22,11 @@ export default function CommentListUI(props: ICommentListUIProps) {
           >
           
         {props.data?.fetchBoardComments.map((el: any) => (
-          <BoardCommentItem key={el._id} el={el}/>
+          <BoardCommentItem showModal={props.showModal} key={el._id} el={el}/>
         ))}
-
-
-    </InfiniteScroll>  
+      </InfiniteScroll>  
         </div>
+        
           {props.isOpen &&
             <Modal
             title="비밀번호를 입력해주세요"

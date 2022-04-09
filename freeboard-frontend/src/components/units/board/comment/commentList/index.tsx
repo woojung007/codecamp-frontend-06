@@ -4,13 +4,20 @@ import { useState } from 'react';
 import CommentWrite from '../commentWrite/BoardCommentWrite.container';
 
 
+interface IBoardCommentItem{
+  el?: any
+  showModal:() => void
+}
 
 
-export default function BoardCommentItem(props){
+
+
+
+export default function BoardCommentItem(props: IBoardCommentItem){
     const [isEdit, setIsEdit] = useState(false);
 
 
-    const onClickEdit = (event) => {
+    const onClickEdit = (event:any) => {
         setIsEdit(true);
       }
   
@@ -19,8 +26,7 @@ export default function BoardCommentItem(props){
     return(
         <div>
             {isEdit === false && (
-          <S.CommentArea key={props.el._id}  id={String(props.el._id)}
-              onClick={props.onClickAlert}>
+          <S.CommentArea key={props.el._id}  id={String(props.el._id)}>
               <S.Profile>profile</S.Profile>
               <S.TextArea>
                 <S.Name>

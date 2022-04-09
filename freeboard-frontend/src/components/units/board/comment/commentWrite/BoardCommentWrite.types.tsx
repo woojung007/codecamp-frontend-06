@@ -1,11 +1,11 @@
 import { ChangeEvent, MouseEvent } from "react";
-import { Rating } from '../commentList/BoardCommentList.styles';
 
-//container
+
+// container
 export interface ICommentWrite {
-  el: any
-  isEdit: boolean
-  setIsEdit:() => void
+  el?: any
+  isEdit?: boolean
+  setIsEdit?: any
 
 }
 
@@ -25,7 +25,7 @@ export interface IUpdateComment{
 }
 
 
-//presenter
+// presenter
 export interface ICreateCommentUIPage {}
 
 export interface ICommentWriteUIProps {
@@ -48,7 +48,7 @@ export interface ICommentWriteUIProps {
 
 
 
-//style
+// style
 
 export interface ICommentCreateBtn {
   isActive: boolean;

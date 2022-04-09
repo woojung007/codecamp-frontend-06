@@ -59,7 +59,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             </s.BoardDiv>
 
             <s.BoardDiv>
-              <s.BoardImage>{props.data?.fetchBoard.images}</s.BoardImage>
+              <s.BoardImage src={`https://storage.googleapis.com/${props.data?.fetchBoard.images}`}/>
             </s.BoardDiv>
 
             <s.BoardDiv>

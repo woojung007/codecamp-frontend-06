@@ -16,7 +16,7 @@ export interface IUpdateVariables{
     title?: string
     content?: string
     youtubeUrl?: string
-    imageUpload?:string | any
+    images?:any
     boardAddress?: {
         zipcode?: string
         address?: string
@@ -59,7 +59,7 @@ export interface IBoardWriteUIProps{
     zipcode: any
     address:string
     addressDetail:string
-    imageUpload?: any
+    imageUpload?: string
     setImageUpload?: any
 
 

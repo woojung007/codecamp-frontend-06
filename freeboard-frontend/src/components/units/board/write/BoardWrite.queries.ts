@@ -36,6 +36,7 @@ export const UPDATE_BOARD = gql`
             youtubeUrl
             likeCount
             dislikeCount
+            images
             createdAt
             updatedAt
             deletedAt

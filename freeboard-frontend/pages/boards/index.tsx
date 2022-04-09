@@ -6,6 +6,7 @@ import PaginationPage from '../../src/components/commons/paginations/01-simple/P
 
 
 
+
 export const FETCH_BOARDS = gql`
     query fetchBoards($page: Int){
         fetchBoards(page: $page){
@@ -33,6 +34,8 @@ export default function BestBoardPage(){
 
     const {data, refetch} = useQuery(FETCH_BOARDS);
     const {data: dataBoardsCount} = useQuery(FETCH_BOARDS_COUNT);
+
+
 
 
     return (

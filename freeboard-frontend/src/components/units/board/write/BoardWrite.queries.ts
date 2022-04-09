@@ -42,3 +42,5 @@ export const UPDATE_BOARD = gql`
             }
 }
 `
+
+

@@ -3,6 +3,7 @@ import * as S from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
 import DaumPostcode from 'react-daum-postcode';
 import { Modal, Button } from 'antd';
+import UploadFilePage from '../../../commons/uploadFile/index';
 
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
@@ -17,8 +18,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <div>
             <S.SmallTitle>작성자</S.SmallTitle>
             <S.NamePassInput
-              onChange={props.onChangeInputs}
-              id="writer"
+              onChange={props.onChangeWriter}
               type="text"
               placeholder="이름을 적어주세요."
               defaultValue={props.data?.fetchBoard.writer}
@@ -29,8 +29,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <div>
             <S.SmallTitle>비밀번호</S.SmallTitle>
             <S.NamePassInput
-              onChange={props.onChangeInputs}
-              id="password"
+              onChange={props.onChangePassword}
               type="password"
               placeholder="비밀번호를 입력해주세요."
             />
@@ -40,8 +39,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
 
         <S.SmallTitle>제목</S.SmallTitle>
         <S.TitleInput
-          onChange={props.onChangeInputs}
-          id="title"
+          onChange={props.onChangeTitle}
           type="text"
           placeholder="제목을 작성해주세요."
           defaultValue={props.data?.fetchBoard.title}
@@ -84,32 +82,21 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
 
           </S.AdDiv>
 
-          <S.TitleInput id="address" readOnly value={props.address}  type="text" />
-          <S.TitleInput id="addressDetail" onChange={props.onChangeInputs} type="text" />
+          <S.TitleInput readOnly value={props.address}  type="text" />
+          <S.TitleInput onChange={props.onChangeAddressDetail} type="text" />
         </S.AdContainer>
 
         <S.SmallTitle>유투브</S.SmallTitle>
-        <S.TitleInput id="youtubeUrl" type="text" placeholder="링크를 복사해 주세요." 
-        onChange={props.onChangeInputs}
+        <S.TitleInput type="text" placeholder="링크를 복사해 주세요." 
+        onChange={props.onChangeYoutubeUrl}
         defaultValue={props.data?.fetchBoard.youtubeUrl || ""}/>
+
 
         <S.SmallTitle>사진 첨부</S.SmallTitle>
         <S.PicDiv>
-          <S.Pictures>
-            <S.Plus> + </S.Plus>
-            <S.Upload>Upload</S.Upload>
-          </S.Pictures>
-
-          <S.Pictures>
-            <S.Plus> + </S.Plus>
-            <S.Upload>Upload</S.Upload>
-          </S.Pictures>
-
-          <S.Pictures>
-            <S.Plus> + </S.Plus>
-            <S.Upload>Upload</S.Upload>
-          </S.Pictures>
+          <UploadFilePage  imageUpload={props.imageUpload}  setImageUpload={props.setImageUpload}/>
         </S.PicDiv>
+
 
         <S.SmallTitle>메인 설정</S.SmallTitle>
         <S.MainSet>

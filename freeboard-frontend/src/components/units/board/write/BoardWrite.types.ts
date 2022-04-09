@@ -16,6 +16,7 @@ export interface IUpdateVariables{
     title?: string
     content?: string
     youtubeUrl?: string
+    imageUpload?:string | any
     boardAddress?: {
         zipcode?: string
         address?: string
@@ -33,14 +34,15 @@ export interface ICreateBoardInput{
 
 // presenter
 export interface IBoardWriteUIProps{
-    onChangeInputs:(event: ChangeEvent<HTMLInputElement>) => void
     onChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void
     onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void
     onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void
-    // onChangeContents: (event: ChangeEvent<HTMLInputElement>) => void
+    onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void
+
     onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void
     onChangeYoutubeUrl:(event: ChangeEvent<HTMLInputElement>) => void
     callGraphqlAPI: () => void
+
     onClickUpdate: () => void
     writerError: string
     passwordError: string
@@ -57,13 +59,15 @@ export interface IBoardWriteUIProps{
     zipcode: any
     address:string
     addressDetail:string
+    imageUpload?: any
+    setImageUpload?: any
+
 
 
 }
 
 
 // style
-
 export interface IRegisterBtnProps{
     isActive: boolean
 }

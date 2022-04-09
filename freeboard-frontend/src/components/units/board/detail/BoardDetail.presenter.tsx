@@ -59,7 +59,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             </s.BoardDiv>
 
             <s.BoardDiv>
-              <s.BoardImage>BoardImage</s.BoardImage>
+              <s.BoardImage>{props.data?.fetchBoard.images}</s.BoardImage>
             </s.BoardDiv>
 
             <s.BoardDiv>

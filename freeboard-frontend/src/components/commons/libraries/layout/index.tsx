@@ -7,11 +7,14 @@ import {ReactNode} from 'react'
 // import { useRouter } from "next/router"
 // import LayoutSidebar from './sidebar/index';
 
-
+const Wrapper = styled.div`
+    width: 100%;
+    height: 100vh;
+    /* position: fixed; */
+`
 const BodyWrapper = styled.div`
     display: flex;
     width: 100%;
-    background-color: white;
 
 `
 
@@ -41,8 +44,7 @@ export default function Layout(props: ILayoutProps){
 
 
     return (
-        <>
-            
+        <Wrapper>
             <LayoutHeader />
             <LayoutBanner />
             <LayoutNavigation />
@@ -53,6 +55,6 @@ export default function Layout(props: ILayoutProps){
             <Body>{props.children}</Body>
             </BodyWrapper>
             <LayoutFooter />
-        </>
+        </Wrapper>
     )
 }

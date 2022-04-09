@@ -115,18 +115,12 @@ padding: 23px 0;
 cursor: pointer;
 `
 
-export const Plus = styled.span`
-color: #4F4F4F;
-text-align: center;
-font-size: 26px;
-font-weight: 300;
+export const ImgUploadInput = styled.input`
 `
 
-export const Upload = styled.p`
-text-align: center;
-color: #4F4F4F;
-font-size: 12px;
-font-weight : 500, medium;
+
+export const ImgUpload = styled.img`
+
 `
 
 export const MainSet = styled.div`

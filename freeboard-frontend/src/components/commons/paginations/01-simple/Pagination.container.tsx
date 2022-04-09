@@ -7,7 +7,11 @@ import { IPaginationPage } from "./Pagination.types";
 
 
 
+
+
 export default function PaginationPage(props: IPaginationPage){
+
+
     const [startPage, setStartPage] = useState(1);
     const [current, setCurrent] = useState(1);
 

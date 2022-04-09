@@ -1,21 +1,14 @@
-import { MouseEvent } from "react"
+import { MouseEvent, ChangeEvent } from 'react';
 
 
-//container
-
-
-
-//presenter
+// presenter
 export interface IListUIProps{
     data?: any
-    dataRefetchBoards?: any
-    dataBoardsCount?: any
+
     moveToWrite: () => void
     onClickMoveToBoardDetail:(event:MouseEvent<HTMLDivElement>) => void
-    onClickPage:any
-    onClickPrevPage:any
-    onClickNextPage: any
-    startPage: number
-    lastPage:number
-    current: number
+
+    onChangeSearch: (event: ChangeEvent<HTMLInputElement>) => void
+    keyword:string
+
 }

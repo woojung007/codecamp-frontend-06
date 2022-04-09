@@ -1,18 +1,33 @@
 import * as s from "./BoardList.styles";
 import { IListUIProps } from "./BoardList.types";
+import {v4 as uuidv4} from 'uuid'
+import styled from '@emotion/styled';
+
+
+interface WordStyleProps{
+  isMatched:boolean
+}
+
+
+const Word = styled.span`
+  color: ${(props: WordStyleProps) => (props.isMatched ? "red" : "black")};
+`
+
+
+
 
 export default function BoardListUI(props: IListUIProps) {
   return (
     <s.BodyHTML>
       <s.Container>
         <s.SearchDiv>
-          <s.SearchInput type="text" placeholder="제목을 검색해주세요." />
+          <s.SearchInput onChange={props.onChangeSearch} type="text" placeholder="제목을 검색해주세요." />
           <s.SearchDateInput
             type="number"
             placeholder="YYYY.MM.DD ~ YYYY.MM.DD"
           />
-          <s.SearchBtn>검색하기</s.SearchBtn>
         </s.SearchDiv>
+
         <s.ListDiv>
           <s.RowTitle>
             <s.ColumnNum>ID</s.ColumnNum>
@@ -24,7 +39,12 @@ export default function BoardListUI(props: IListUIProps) {
             <s.Row key={el._id}>
               <s.ColumnNum>{index + 1}</s.ColumnNum>
               <s.Column  id={el._id} onClick={props.onClickMoveToBoardDetail}>
-                {el.title}
+                {el.title
+                .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
+                .split("#$%") 
+                .map((el:any)=> (
+                  <Word key={uuidv4()} isMatched={props.keyword === el}>{el}</Word>
+                ))}
               </s.Column>
               <s.ColumnSmall>{el.writer}</s.ColumnSmall>
               <s.ColumnSmall>{el.createdAt.slice(0,10)}</s.ColumnSmall>

@@ -41,7 +41,7 @@ export interface ICommentWriteUIProps {
   contents: string
   value: number
   handleChange: any
-  isEdit: boolean
+  isEdit?: boolean
   setIsEdit:() => void
   el: any
 }

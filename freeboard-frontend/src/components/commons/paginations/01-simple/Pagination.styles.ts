@@ -10,7 +10,7 @@ justify-content: center;
 `
 
 
-//pagination
+// pagination
 
 export const PagesWrapper = styled.div`
     width: 100%;

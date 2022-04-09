@@ -16,7 +16,7 @@ margin-top: 101px;
 margin-bottom: 100px;
 `
 
-//Best
+// Best
 export const BestDiv = styled.div`
 display: flex;
 flex-direction: column;
@@ -55,7 +55,7 @@ line-height: 42px;
 text-align: center;
 `
 
-//Search
+// Search
 export const SearchDiv = styled.div`
 display: flex;
 justify-content: space-evenly;
@@ -66,12 +66,13 @@ padding-top: 40px;
 `
 
 export const SearchInput = styled.input`
-width: 60%;
+width: 78%;
 height: 52px;
 background: #F2F2F2;
 border: none;
 border-radius: 10px;
 padding-left: 15px;
+margin-right: 40px;
 `
 
 export const SearchDateInput = styled.input`
@@ -85,23 +86,9 @@ text-align: center;
 color: #BDBDBD;
 `
 
-export const SearchBtn = styled.button`
-width: 94px;
-height: 52px;
-background: #000000;
-border-radius: 10px;
-border: none;
-color: #fff;
-cursor: pointer;
-:hover{
-    background-color: #fff;
-    color: #000000;
-    border: 1px solid #BDBDBD;
-}
-`
 
 
-//List
+// List
 export const ListDiv = styled.div`
 width: 100%;
 height: 662px;
@@ -181,27 +168,4 @@ cursor: pointer;
 
 
 
-//pagination
-
-export const PagesWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-top: 60px;
-
-`
-
-export const Pages = styled.button`
-    border: 0;
-`
-
-export const PrevButton = styled.button`
-    cursor: pointer;
-
-`
-
-export const NextButton = styled.button`
-    cursor: pointer;
-
-`
 

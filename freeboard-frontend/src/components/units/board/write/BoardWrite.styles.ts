@@ -102,7 +102,7 @@ display: flex;
 padding-bottom: 40px;
 `
 
-export const Pictures = styled.div`
+export const PicUploadDiv = styled.div`
 width: 78px;
 height: 78px;
 background-color: #bdbdbd;
@@ -115,13 +115,6 @@ padding: 23px 0;
 cursor: pointer;
 `
 
-export const ImgUploadInput = styled.input`
-`
-
-
-export const ImgUpload = styled.img`
-
-`
 
 export const MainSet = styled.div`
 width: 200px;

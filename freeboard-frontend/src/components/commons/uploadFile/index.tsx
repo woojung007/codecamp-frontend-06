@@ -1,5 +1,4 @@
 import { gql, useMutation } from '@apollo/client';
-import { IMutation, IMutationUploadFileArgs } from '../../../../../quiz/src/commons/types/generated/types';
 import { useRef, ChangeEvent } from 'react';
 import { Modal } from 'antd';
 import { checkFileValidation } from '../libraries/validation';
@@ -18,7 +17,9 @@ mutation uploadFile($file:Upload!){
 
 interface IUploadFilePage{
     imageUpload?: any
-    setImageUpload?: any
+    onChangeFileUrl: (fileUrl: any, index: number) => void
+    fileUrl: string
+    index: number
 }
 
 const Wrapper = styled.div`
@@ -26,27 +27,39 @@ const Wrapper = styled.div`
     display: flex;
 `
 
-const UploadButton = styled.div`
-    width: 100px;
-    height: 100px;
-    background-repeat: #bdbdbd;
-    cursor: pointer;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 500;
-    padding-top: 15px;
-`
 
 const UpImage = styled.img`
     width: 100px;
     height: 100px;
     border: 1px solid #bdbdbd;
-    margin-left: 30px;
+    margin-right: 15px;
+
 `
 
 
+const UploadDiv = styled.div`
+    width: 100px;
+    height: 100px;
+    background-color: #bdbdbd;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    margin-right: 15px;
+`
+
+const UploadHidden = styled.div`
+    
+`
+
+
+
+
 export default function UploadFilePage(props:IUploadFilePage) {
-    const [uploadFile] = useMutation<Pick<IMutation,'uploadFile'>,IMutationUploadFileArgs>(UPLOAD_FILE)
+    const [uploadFile] = useMutation(UPLOAD_FILE)
     const fileRef = useRef<HTMLInputElement>(null)
 
 
@@ -68,7 +81,7 @@ export default function UploadFilePage(props:IUploadFilePage) {
         try{
             const result =  await uploadFile({variables: {file} })
             console.log(result)
-            props.setImageUpload(result.data?.uploadFile.url)
+            props.onChangeFileUrl(result.data.uploadFile.url, props.index)
         
         }catch(error:any){
             Modal.error({content: error.message})
@@ -79,12 +92,20 @@ export default function UploadFilePage(props:IUploadFilePage) {
     return(
 
         <Wrapper>
-            <UploadButton onClick={onClickUpload} style={{width: "100px", height: "100px", backgroundColor:"#bdbdbd"}}>
-                <input type="file" onChange={onChangeFile}  style={{display: "none"}} ref={fileRef}/>
-                + <br /> Upload
-            </UploadButton>
-
-            <UpImage  src={`https://storage.googleapis.com/${props.imageUpload}`}/>
+            {props.fileUrl? (
+            <UpImage 
+                onClick={onClickUpload} 
+                src={`https://storage.googleapis.com/${props.fileUrl}`}
+            />
+    ):(
+            <UploadDiv  onClick={onClickUpload}>
+                <>+</><br/>
+                <>Upload</>
+            </UploadDiv>
+    )}
+            <UploadHidden>
+                <input style={{display: "none"}} type="file" onChange={onChangeFile}  ref={fileRef} />
+            </UploadHidden>
 
         </Wrapper>
     )

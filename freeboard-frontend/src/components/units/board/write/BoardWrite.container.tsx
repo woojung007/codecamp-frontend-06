@@ -19,7 +19,7 @@ import { IMutation, IMutationCreateBoardArgs, IMutationUpdateBoardArgs } from '.
 export default function BoardWrite(props: IBoardWriteProps) {
   const [isActive, setIsActive] = useState(false);
   const router = useRouter();
-  const [imageUpload, setImageUpload] = useState("")
+  const [imageUpload, setImageUpload] = useState(["","",""])
 
 
   const [writer, setWriter] = useState("");
@@ -75,7 +75,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
               address,
               addressDetail: addressDetail
             },
-            images:[imageUpload]
+            images:imageUpload
           },
           password: password,
           boardId: String(router.query.boardId),
@@ -123,6 +123,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
             title: title,
             contents:contents,
             youtubeUrl:youtubeUrl,
+            images:imageUpload,
             boardAddress:{
               zipcode: zipcode,
               address: address,
@@ -213,6 +214,15 @@ const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
   }
 
 
+const onChangeFileUrl = (fileUrl:string, index:number) => {
+  const newFile = [...imageUpload]
+  newFile[index] = fileUrl
+  setImageUpload(newFile)
+}
+
+
+
+
   // 주소 modal창
 
   const showModal = () => {
@@ -264,7 +274,8 @@ const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
       address={address}
       addressDetail={addressDetail}
       imageUpload={imageUpload}
-      setImageUpload={setImageUpload}
+
+      onChangeFileUrl={onChangeFileUrl}
 
       isEdit={props.isEdit}
       data={props.data}

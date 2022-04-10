@@ -22,6 +22,7 @@ export interface IUpdateVariables{
         address?: string
         addressDetail?: string
     }
+    data?: any
 
 }
 
@@ -59,9 +60,8 @@ export interface IBoardWriteUIProps{
     zipcode: any
     address:string
     addressDetail:string
-    imageUpload?: string
-    setImageUpload?: any
-
+    imageUpload?: string[]
+    onChangeFileUrl: (fileUrl: any, index: number) => void
 
 
 }

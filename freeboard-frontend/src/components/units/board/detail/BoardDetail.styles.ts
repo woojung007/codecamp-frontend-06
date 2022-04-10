@@ -27,7 +27,7 @@ export const ContentsContainer = styled.div`
 
 
 
-//Header
+// Header
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -118,7 +118,7 @@ font-size: 30px;
 }
 `;
 
-//content
+// content
 export const Contents = styled.div`
   display: flex;
   flex-direction: column;
@@ -129,6 +129,14 @@ export const Contents = styled.div`
 
 export const BoardDiv = styled.div`
   display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+
+export const ImageBoardDiv = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
 `;
@@ -160,7 +168,7 @@ export const BoardVideo = styled.div`
   margin-bottom: 163px;
 `;
 
-//좋아요
+// 좋아요
 export const BoardLike = styled.div`
   display: flex;
   flex-direction: row;

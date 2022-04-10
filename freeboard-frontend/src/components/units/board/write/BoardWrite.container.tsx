@@ -1,5 +1,5 @@
 // 컨테이너
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useEffect } from 'react';
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { CREATE_BOARD, UPDATE_BOARD} from "./BoardWrite.queries";
@@ -19,8 +19,6 @@ import { IMutation, IMutationCreateBoardArgs, IMutationUpdateBoardArgs } from '.
 export default function BoardWrite(props: IBoardWriteProps) {
   const [isActive, setIsActive] = useState(false);
   const router = useRouter();
-  const [imageUpload, setImageUpload] = useState(["","",""])
-
 
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +28,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [zipcode, setZipcode] = useState("")
   const [address, setAddress] = useState("")
   const [addressDetail, setAddressDetail] = useState("")
+  const [imageUpload, setImageUpload] = useState(["","",""])
 
   const [writerError, setWriterError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -46,6 +45,25 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   // onclickUpdate
   const onClickUpdate = async () => {
+
+    const currentFile = JSON.stringify(imageUpload)
+    const defaultFile = JSON.stringify(props.data.fetchBoard.images)
+    const isChangeFile = currentFile !== defaultFile
+
+
+    if (
+      !title &&
+      !contents &&
+      !youtubeUrl &&
+      !address &&
+      !addressDetail &&
+      !zipcode &&
+      !isChangeFile
+    ) {
+      alert("수정한 내용이 없습니다.");
+      return;
+    }
+
     try {
       const updateVariables: IUpdateVariables = {
         boardId: router.query.boardId
@@ -61,6 +79,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       if(address) updateVariables.boardAddress.address = address;
       if(addressDetail) updateVariables.boardAddress.addressDetail = addressDetail;
       }
+      if(isChangeFile) updateVariables.images = imageUpload;
     
 
 
@@ -87,6 +106,16 @@ export default function BoardWrite(props: IBoardWriteProps) {
       // if (error instanceof Error) Modal.error(error.message);
     }
   };
+
+
+  useEffect(() => {
+    if(props.data?.fetchBoard.images?.length){
+      setImageUpload([...props.data?.fetchBoard.images])
+    }
+  },[props.data])
+
+
+
 
   const callGraphqlAPI = async () => {
 

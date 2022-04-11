@@ -23,7 +23,6 @@ export default function ImageValidationPage(){
     const [imageUrl, setImageUrl] = useState<string | undefined>("");
 
     
-    // mutation 실제로 사용하기 위해서 
     const [uploadFile] = useMutation<
     Pick<IMutation, "uploadFile">,
     IMutationUploadFileArgs

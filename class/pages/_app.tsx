@@ -6,6 +6,9 @@ import Layout from '../src/components/commons/layout/index';
 import { Global } from '@emotion/react';
 import { globalStyles } from '../src/commons/styles/globalStyles';
 import {createUploadLink} from 'apollo-upload-client'
+import {RecoilRoot} from "recoil"
+// import {createContext} from 'react'
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -39,12 +42,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     cache: new InMemoryCache(),
   });
 
+
   return (
     <ApolloProvider client={client}>
+      <RecoilRoot>
       <Global styles={globalStyles}/>
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      </RecoilRoot>
     </ApolloProvider>
   );
 }

@@ -8,7 +8,7 @@ export default function PaginationUI(props: IPaginationUI) {
     <s.BodyHTML>
             <s.PagesWrapper>
               <s.PrevButton 
-              disabled={props.startPage === 1  ? true : false}  
+              disabled={props.startPage === 1}  
               onClick={props.onClickPrevPage}/>
               
               {`      `}
@@ -26,7 +26,7 @@ export default function PaginationUI(props: IPaginationUI) {
               {`      `}
 
               <s.NextButton 
-              disabled={!(props.startPage + 10 <= props.lastPage)? true : false} 
+              disabled={!(props.startPage + 10 <= props.lastPage)} 
               onClick={props.onClickNextPage}/>
             </s.PagesWrapper>
     </s.BodyHTML>

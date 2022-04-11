@@ -44,6 +44,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
 
   // onclickUpdate
+  
   const onClickUpdate = async () => {
 
     const currentFile = JSON.stringify(imageUpload)

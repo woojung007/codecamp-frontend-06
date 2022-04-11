@@ -9,7 +9,7 @@ import { useRecoilState } from "recoil";
 import { isEditState } from "../../src/commons/store";
 
 export default function GlobalStatePage() {
-  const [isEdit, setIsEdit] = useRecoilState(isEditState);
+  const [, setIsEdit] = useRecoilState(isEditState);
 
   useEffect(() => {
     setIsEdit(true);

@@ -1,7 +1,7 @@
 import { gql, useMutation } from '@apollo/client';
 import { useRef, ChangeEvent } from 'react';
 import { Modal } from 'antd';
-import { checkFileValidation } from '../libraries/validation';
+import { checkFileValidation } from '../../../commons/libraries/validation';
 import styled from '@emotion/styled';
 
 

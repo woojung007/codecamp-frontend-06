@@ -47,7 +47,7 @@ const onChangePassword = (event:ChangeEvent<HTMLInputElement>) =>{
 
 const onClickLogin = async () => {
 
-    if(password === "" || password.length <= 8){
+    if(password === "" && password.length < 8){
         setPasswordError("비밀번호가 올바르지 않습니다");
     }else{
         setPasswordError("")

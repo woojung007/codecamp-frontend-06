@@ -1,4 +1,4 @@
-import { getDate } from "../../../commons/libraries/utils";
+import { getDate } from "../../../../commons/libraries/utils";
 import * as s from "./BoardDetail.styles";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
 import ReactPlayer from 'react-player'

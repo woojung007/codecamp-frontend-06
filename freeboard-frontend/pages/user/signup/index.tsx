@@ -1,7 +1,7 @@
-import LoginContainer from '../../../src/components/commons/login/login.container';
+import SignUpContainer from '../../../src/components/commons/signup/signup.container';
 export default function SignUpPage(){
 
 
 
-    return <LoginContainer />
+    return <SignUpContainer />
 }

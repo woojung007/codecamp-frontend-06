@@ -30,6 +30,12 @@ const onChangeEmail = (event:ChangeEvent<HTMLInputElement>) =>{
 
 const onChangePassword = (event:ChangeEvent<HTMLInputElement>) =>{
     setPassword(event.target.value)
+
+    if(!(/^\w[a-zA-Z0-9]{7,16}$/.test(event.target.value))){
+        setPasswordError("비밀번호가 올바르지 않습니다")
+    }else{
+        setPasswordError("")
+    }
 }
 
 

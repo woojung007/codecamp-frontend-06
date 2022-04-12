@@ -4,7 +4,7 @@ import LayoutNavigation from "./navigation"
 import LayoutFooter from "./footer"
 import styled from "@emotion/styled"
 import {ReactNode} from 'react'
-// import { useRouter } from "next/router"
+import { useRouter } from "next/router"
 // import LayoutSidebar from './sidebar/index';
 
 const Wrapper = styled.div`
@@ -19,6 +19,7 @@ const BodyWrapper = styled.div`
 `
 
 const Body = styled.div`
+    width: 100%;
     height: auto;
 
 `
@@ -28,26 +29,33 @@ interface ILayoutProps{
 }
 
 
-// const HIDDEN_SIDEBAR = [
-//     "/boards",
-//     "/boards/new",
-// ]
+const HIDDEN_BANNER = [
+    "/boards/new",
+    "/user/login"
+]
 
+const HIDDEN_NAV = [
+    "/boards/new",
+    "/user/login"
+]
 
 
 
 export default function Layout(props: ILayoutProps){
-    // const router = useRouter()
+    const router = useRouter()
 
-    // const isHidden = HIDDEN_SIDEBAR.includes(router.asPath)
+    let isHidden = HIDDEN_BANNER.includes(router.asPath);
+        isHidden = HIDDEN_NAV.includes(router.asPath);
+
+
     // const isHidden = HIDDEN_SIDEBAR.includes(router.asPath)
 
 
     return (
         <Wrapper>
             <LayoutHeader />
-            <LayoutBanner />
-            <LayoutNavigation />
+            {!isHidden && <LayoutBanner />}
+            {!isHidden && <LayoutNavigation />}
             <BodyWrapper>
             <div>
             {/* {!isHidden &&  <LayoutSidebar />} */}

@@ -29,7 +29,7 @@ const Login = styled.div`
 
 `
 
-const Signup = styled.div`
+const SignUp = styled.div`
     color: #fff;
     width: 80px;
     height: 30px;
@@ -54,7 +54,7 @@ export default function LayoutHeader(){
         <Wrapper>
             <Login>Login</Login>
 
-            <Signup>SignUp</Signup>
+            <SignUp>SignUp</SignUp>
         </Wrapper>
     )
 }

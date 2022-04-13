@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import { Global } from '@emotion/react';
 import Layout from '../src/commons/libraries/layout/index';
-import { globalStyles } from '../src/commons/types/generated/styles/globalStyles';
+import { globalStyles } from '../src/commons/styles/globalStyles';
 import 'antd/dist/antd.css';
 import { RecoilRoot} from 'recoil';
 import ApolloSetting from '../src/components/commons/apollo/index';

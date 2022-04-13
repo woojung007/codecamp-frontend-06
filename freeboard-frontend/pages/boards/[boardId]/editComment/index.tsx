@@ -1,4 +1,4 @@
-//댓글 수정
+// 댓글 수정
 
 import { gql, useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';

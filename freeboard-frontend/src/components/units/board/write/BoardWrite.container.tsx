@@ -122,27 +122,18 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
     if (writer === "") {
       setWriterError("이름을 입력해 주세요");
-    } else {
-      setWriterError("");
-    }
-
+    } 
     if (password === "") {
       setPasswordError("비밀번호를 입력해주세요");
-    } else {
-      setPasswordError("");
-    }
+    } 
 
     if (title === "") {
       setTitleError("제목을 입력해주세요");
-    } else {
-      setTitleError("");
     }
 
     if (contents === "") {
       setContentError("내용을 입력해주세요");
-    } else {
-      setContentError("");
-    }
+    } 
 
     try {
       const result = await createBoard({     
@@ -176,7 +167,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
-      setWriter(event.target.value)
+      setWriter(event.target.value);
+
+    if(event.target.value !== ""){
+      setWriterError("")
+    }
+
     if (event.target.id && password && title && contents) {
       setIsActive(true);
     } else {
@@ -188,6 +184,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value)
+
+    if(event.target.value !== ""){
+      setPasswordError("")
+    }
 
     if (
       writer !== "" &&
@@ -204,6 +204,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value)
 
+    if(event.target.value !== ""){
+      setTitleError("")
+    }
     
     if (
       writer !== "" &&
@@ -220,6 +223,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(event.target.value)
   
+    if(event.target.value !== ""){
+      setContentError("")
+    }
+
     if (
       writer !== "" &&
       password !== "" &&

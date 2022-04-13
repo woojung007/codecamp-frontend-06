@@ -7,10 +7,21 @@ const Wrapper = styled.div`
 width: 100%;
 display: flex;
 flex-direction: row;
-background-color: blue;
 
 `;
 
+const DisneyWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+`
+
+
+const DisneyApi = styled.div`
+    width: 15%;
+    background-color: lightcoral;
+`
 
 const DisneyImg = styled.img`
 width: 100px;
@@ -20,7 +31,7 @@ height: 100px;
 
 
 
-export default function OpenApiPage(){
+export default function DisneyOpenApiPage(){
     const [imgUrls, setImgUrls] = useState<string[]>([]);
 
     useEffect(() => {
@@ -40,14 +51,24 @@ export default function OpenApiPage(){
 
     return(
         <Wrapper>
-            <div>
+            <DisneyWrapper>
                 {imgUrls.map((el:any,index:number) => (
-                    <div key={el._id}>
+                    <DisneyApi key={el._id}>
+                        
+                        <div>{index + 1}</div>
+
                         <DisneyImg  src={el.imageUrl}/>
                         {(index + 1) % 3 === 0 && <br />}
-                    </div>
+
+                        <div>Name : {el.name}</div>
+
+                        <div>
+                        {el?.films ? <div>Films : {el.films} </div> : <></>}
+                        </div>
+                        
+                    </DisneyApi>
                 ))}
-            </div>
+            </DisneyWrapper>
         </Wrapper>
     )
 }

@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/21-05-regex/index.js"  ],
+, "pages/21-05-regex/index.js", "pages/21-quiz/21-05-regex/index.js"  ],
   "exclude": [
     "node_modules"
   ]

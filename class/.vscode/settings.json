@@ -3,6 +3,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "cSpell.ignoreWords": [
         "antd",
+        "hookform",
+        "mylocalstorage",
         "uuidv"
     ]
 }

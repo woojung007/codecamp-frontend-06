@@ -1,7 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache, ApolloLink } from "@apollo/client";
 import {createUploadLink} from 'apollo-upload-client'
 import { useRecoilState } from 'recoil';
-import { accessTokenState } from '../../../commons/store/index';
+import { accessTokenState, userInfoState } from '../../../commons/store/index';
 import { useEffect } from 'react';
 
 
@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 
 export default function ApolloSetting(props){
     const [accessToken,setAccessToken] = useRecoilState(accessTokenState);
+    const [,setUserInfo] = useRecoilState(userInfoState);
+
 
     // ///////////////////////////////////////////////////////////////////
     // 1. 더이상 지원되지 않음 !!
@@ -31,8 +33,10 @@ export default function ApolloSetting(props){
 
     // 3. 세번째 방법 !!
     useEffect(()=>{
-      const mylocalstorageAccessToken = localStorage.getItem("accessToken")
-      setAccessToken(mylocalstorageAccessToken || "")
+      const accessToken = localStorage.getItem("accessToken")
+      const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}")
+      setAccessToken(accessToken || "")
+      setUserInfo(userInfo || "")
     },[])
 
 

@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { withAuth } from '../src/components/commons/hocs/withAuth';
 // import { Button } from 'antd';
 
 
 
-export default function LandingPage(){
+function LandingPage(){
 
     const BodyHTML = styled.div`
         width: 100%;
@@ -20,3 +21,5 @@ export default function LandingPage(){
     )
 
 }
+
+export default withAuth(LandingPage)

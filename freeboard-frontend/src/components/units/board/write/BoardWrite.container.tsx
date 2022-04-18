@@ -103,12 +103,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
       });
     
       router.push(`/boards/${router.query.boardId}`);
-    } catch (error) {
-      // if (error instanceof Error) Modal.error(error.message);
+    } catch (error:any) {
+      if (error instanceof Error) Modal.error({content: error.message});
     }
   };
 
-
+// 패치 받은 이미지가 있다면 미리보기 이미지로 보여줘라 , data가 있을 때만
   useEffect(() => {
     if(props.data?.fetchBoard.images?.length){
       setImageUpload([...props.data?.fetchBoard.images])

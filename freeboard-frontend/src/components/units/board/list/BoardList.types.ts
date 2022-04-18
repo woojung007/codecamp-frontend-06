@@ -1,6 +1,13 @@
 import { MouseEvent, ChangeEvent } from 'react';
 
 
+// container
+export interface IBoardList{
+    refetch: any
+    data: any
+}
+
+
 // presenter
 export interface IListUIProps{
     data?: any

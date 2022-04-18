@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { useRouter } from 'next/router';
 
 
 
@@ -48,11 +49,16 @@ const SignUp = styled.div`
 
 
 export default function LayoutHeader(){
+    const router = useRouter()
+
+    const onClickLogIn = () => {
+        router.push("/user/login")
+    }
 
 
     return (
         <Wrapper>
-            <Login>Login</Login>
+            <Login onClick={onClickLogIn}>Login</Login>
 
             <SignUp>SignUp</SignUp>
         </Wrapper>

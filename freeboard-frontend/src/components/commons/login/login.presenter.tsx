@@ -65,7 +65,7 @@ export default function LoginPresenter(props:ILoginPresenter){
                     <span>로그인 상태 유지</span>
                 </CheckDiv>
                 
-                <LoginBtn onClick={props.onClickLogin}>로그인하기</LoginBtn>
+                <LoginBtn onClick={props.onClickLogIn}>로그인하기</LoginBtn>
 
                 <div></div>
             </Wrapper>

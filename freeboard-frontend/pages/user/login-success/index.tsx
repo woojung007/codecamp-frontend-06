@@ -1,23 +1,19 @@
-import { useQuery,gql } from '@apollo/client';
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../src/commons/store/index';
+import { withAuth } from '../../../src/components/commons/hocs/withAuth';
 
-const FETCH_USER_LOGGED_IN = gql`
-  query fetchUserLoggedIn{
-    fetchUserLoggedIn{
-      email
-      name
-    }
-  }
-`
 
-export default function LoginSuccessPage() {
+function LoginSuccessPage() {
 
-const {data} = useQuery(FETCH_USER_LOGGED_IN);
-
+  const [userInfo] = useRecoilState(userInfoState);
 
 
 
 
   return(
-    <div>{data?.fetchUserLoggedIn.name}님 반갑습니다!!!</div>
+    <div>{userInfo.name}님 반갑습니다!!!</div>
   )
 }
+
+
+export default withAuth(LoginSuccessPage)

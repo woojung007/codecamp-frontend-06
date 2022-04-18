@@ -9,6 +9,10 @@ import { IMutation, IMutationLikeBoardArgs, IMutationDislikeBoardArgs } from '..
 
 
 export default function BoardDetail() {
+  const [callLikeCount] = useMutation<Pick<IMutation, 'likeBoard'>, IMutationLikeBoardArgs>(LIKE_BOARD);
+  const [callDislikeCount] = useMutation<Pick<IMutation, 'dislikeBoard'>,IMutationDislikeBoardArgs>(DISLIKE_BOARD);
+  const [deleteBoard] = useMutation(DELETE_BOARD);
+
   const router = useRouter();
 
   const { data } = useQuery(FETCH_BOARD, {
@@ -16,10 +20,6 @@ export default function BoardDetail() {
   });
 
   console.log("data",data)
-
-  const [callLikeCount] = useMutation<Pick<IMutation, 'likeBoard'>, IMutationLikeBoardArgs>(LIKE_BOARD);
-  const [callDislikeCount] = useMutation<Pick<IMutation, 'dislikeBoard'>,IMutationDislikeBoardArgs>(DISLIKE_BOARD);
-  const [deleteBoard] = useMutation(DELETE_BOARD);
 
 
   

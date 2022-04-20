@@ -1,10 +1,11 @@
 {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "cSpell.ignoreWords": [
-        "antd",
-        "hookform",
-        "mylocalstorage",
-        "uuidv"
-    ]
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "cSpell.ignoreWords": [
+    "Dompurify",
+    "antd",
+    "hookform",
+    "mylocalstorage",
+    "uuidv"
+  ]
 }

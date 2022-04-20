@@ -61,7 +61,6 @@ export default function ReactHookFormPage() {
       password: <input type="text" {...register("password")}/>
       <Errors>{formState.errors.password?.message}</Errors>
 
-
       <LoginBtn isActive={formState.isValid}>login</LoginBtn>
     </form>
   )

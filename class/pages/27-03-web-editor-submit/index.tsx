@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // ssr: 서브사이드 렌더링
+// React-Quill 을 import 하게 되는 시점을 document 가 선언된 시점 이후에 선언할 수 있게 해야한다
 
 const CREATE_BOARD = gql`
   mutation createBoard($createBoardInput: CreateBoardInput!) {

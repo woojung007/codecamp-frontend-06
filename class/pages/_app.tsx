@@ -28,6 +28,13 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <div>
+            {/* <Head>
+                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49d7bc1bb0773f8853f0c0f71370b1dc"></script>
+            </Head>
+             <Script src=""/>
+                body에 스크립트가 추가된다 */}
+
     <RecoilRoot>
       <ApolloSetting>
         <Global styles={globalStyles} />
@@ -36,6 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Layout>
       </ApolloSetting>
     </RecoilRoot>
+    </div>
   );
 }
 

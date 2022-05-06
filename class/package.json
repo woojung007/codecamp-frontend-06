@@ -63,11 +63,6 @@
     "prettier": "2.6.0",
     "typescript": "^4.6.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "link-staged": {
     "**/*.{ts,tsx}": [
       "npx eslint '**/*.{ts,tsx}'"

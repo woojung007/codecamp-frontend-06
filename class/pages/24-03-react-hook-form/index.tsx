@@ -12,7 +12,7 @@ interface IFormValues{
 
 export default function ReactHookFormPage() {
 
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, formState } = useForm();
 
   const onClickSubmit = (data: IFormValues) => {
     console.log(data)
@@ -26,7 +26,7 @@ export default function ReactHookFormPage() {
       title: <input type="text" {...register("title")}/>
       content: <input type="text" {...register("contents")}/>
       {/* content: <input type="text" {...register("boardAddress.addressDetail")}/> */}
-      <button>submit</button>
+      <button disabled={formState.isSubmitting}>submit</button>
     </form>
   )
 }

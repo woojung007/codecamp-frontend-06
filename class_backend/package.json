@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev index.ts"
+    "dev": "ts-node-dev index.ts",
+    "build": "babel src -d lib",
+    "test": "jest"
   },
   "devDependencies": {
     "typescript": "^4.6.3"

@@ -14,8 +14,8 @@ const FETCH_USER_LOGGED_IN = gql`
 `;
 
 function PointChargePage() {
-  const { data } = useQuery(FETCH_USER_LOGGED_IN);
   const [amount, setAmount] = useState(100);
+  const { data } = useQuery(FETCH_USER_LOGGED_IN);
   const router = useRouter();
 
   const onChangeValue = (event) => {

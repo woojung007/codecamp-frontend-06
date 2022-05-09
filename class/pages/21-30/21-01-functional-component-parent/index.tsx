@@ -1,4 +1,4 @@
-import FunctionalComponentChildPage from '../21-02-functional-component-child/index';
+import FunctionalComponentChildPage from '../../21-02-functional-component-child/index';
 export default function FunctionalComponentParentPage(){
 
 

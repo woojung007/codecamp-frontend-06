@@ -15,7 +15,7 @@ export interface ICommentListProps{
 export interface ICommentListUIProps{
   data?: any;
   id?: any
-  onClickDeleteComment: (event: MouseEvent<HTMLButtonElement>) => void
+  onClickDeleteComment: (event: MouseEvent<HTMLElement>) => void
   showModal: any
   handleCancel: () => void
   isOpen: boolean

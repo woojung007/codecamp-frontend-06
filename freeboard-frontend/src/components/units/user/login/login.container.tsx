@@ -5,7 +5,7 @@ import { useApolloClient, useMutation } from '@apollo/client';
 import { LOGIN_USER, FETCH_USER_LOGGED_IN } from './login.queries';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
-import { accessTokenState, userInfoState } from '../../../commons/store/index';
+import { accessTokenState, userInfoState } from '../../../../commons/store/index';
 
 
 export default function LoginContainer(){

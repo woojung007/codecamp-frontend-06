@@ -5,7 +5,11 @@ import { useQuery, gql } from "@apollo/client";
 import styled from "@emotion/styled";
 import { ChangeEvent } from "react";
 import _ from "lodash";
-import { IQuery, IQueryFetchBoardsArgs } from '../../src/commons/types/generated/types';
+import {
+  IQuery,
+  IQueryFetchBoardsArgs,
+} from "../../../src/commons/types/generated/types";
+
 // lodash를 활용하여 지연시간을 줄 수 있다.
 
 const FETCH_BOARDS = gql`

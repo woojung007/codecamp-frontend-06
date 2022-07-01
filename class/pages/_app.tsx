@@ -3,8 +3,8 @@ import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
-import 'bootstrap/scss/bootstrap.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/scss/bootstrap.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -31,22 +31,20 @@ import ApolloSetting from "../src/components/commons/apollo/index";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
-            {/* <Head>
+      {/* <Head>
                 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49d7bc1bb0773f8853f0c0f71370b1dc"></script>
             </Head>
              <Script src=""/>
                 body에 스크립트가 추가된다 */}
 
-    <RecoilRoot>
-      <ApolloSetting>
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloSetting>
-    </RecoilRoot>
-
-
+      <RecoilRoot>
+        <ApolloSetting>
+          <Global styles={globalStyles} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloSetting>
+      </RecoilRoot>
     </div>
   );
 }

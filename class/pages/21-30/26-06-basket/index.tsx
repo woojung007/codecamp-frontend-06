@@ -1,6 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
 import styled from "@emotion/styled";
-import { IBoard } from "../../src/commons/types/generated/types";
+import { IBoard } from "../../../src/commons/types/generated/types";
 
 const FETCH_BOARDS = gql`
   query fetchBoards {
@@ -24,7 +24,7 @@ const MyColumn = styled.div`
 export default function BasketPage() {
   const { data } = useQuery(FETCH_BOARDS);
 
-  const onClickBasket = (el) => () => {
+  const onClickBasket = (el: any) => () => {
     console.log(el);
     // 새로고침이 아니라 계속계속 추가 시키고 싶다
     // 객체 또는 배열을 만든다
@@ -39,7 +39,7 @@ export default function BasketPage() {
     // setItem()
     //
     // 이미 장바구니 물품(el)이 있으면 경고하기 - temp에 임시로 잠깐 담아둔다
-    const temp = baskets.filter((basketEl) => basketEl._id === el._id);
+    const temp = baskets.filter((basketEl: any) => basketEl._id === el._id);
     if (temp.length === 1) {
       alert("이미 담으신 물품입니다");
       return; // 아래는 실행이 안된다

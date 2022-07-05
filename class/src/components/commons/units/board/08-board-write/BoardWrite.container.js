@@ -15,6 +15,7 @@ export default function BoardWrite(props) {
   const [myMutation] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
 
+  // 수정하기 api
   const onClickUpdate = async () => {
     await updateBoard({
       variables: {
@@ -28,6 +29,7 @@ export default function BoardWrite(props) {
     router.push(`/09-01-boards/${router.query.number}`);
   };
 
+  // 등록하기 api
   const callGraphqlAPI = async () => {
     const result = await myMutation({
       variables: { writer: myWriter, title: myTitle, contents: myContents },

@@ -1,11 +1,9 @@
-// 프레젠터
 import * as S from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
-import DaumPostcode from 'react-daum-postcode';
-import { Modal, Button } from 'antd';
-import UploadFilePage from '../../../commons/uploadFile/index';
-import { v4 as uuidv4 } from 'uuid';
-
+import DaumPostcode from "react-daum-postcode";
+import { Modal, Button } from "antd";
+import UploadFilePage from "../../../commons/uploadFile/index";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
@@ -59,49 +57,55 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <S.SmallTitle>주소</S.SmallTitle>
 
           <S.AdDiv>
-            <S.AdInput 
-            readOnly
-            id="zipcode"
-            value={props.zipcode ||
-            props.data?.fetchBoard.boardAddress?.zipcode ||
-            ""} 
-            type="text" placeholder="07250" />
+            <S.AdInput
+              readOnly
+              id="zipcode"
+              value={
+                props.zipcode ||
+                props.data?.fetchBoard.boardAddress?.zipcode ||
+                ""
+              }
+              type="text"
+              placeholder="07250"
+            />
 
-            <Button onClick={props.showModal}>
-              우편번호 검색
-            </Button>
+            <Button onClick={props.showModal}>우편번호 검색</Button>
 
-              {props.isOpen &&
-              <Modal 
-              visible={true}     
-              onOk={props.handleOk} 
-              onCancel={props.handleCancel}>
-
+            {props.isOpen && (
+              <Modal
+                visible={true}
+                onOk={props.handleOk}
+                onCancel={props.handleCancel}
+              >
                 <DaumPostcode onComplete={props.handleComplete} />
-                </Modal>
-                }
-
+              </Modal>
+            )}
           </S.AdDiv>
 
-          <S.TitleInput readOnly value={props.address}  type="text" />
+          <S.TitleInput readOnly value={props.address} type="text" />
           <S.TitleInput onChange={props.onChangeAddressDetail} type="text" />
         </S.AdContainer>
 
         <S.SmallTitle>유투브</S.SmallTitle>
-        <S.TitleInput type="text" placeholder="링크를 복사해 주세요." 
-        onChange={props.onChangeYoutubeUrl}
-        defaultValue={props.data?.fetchBoard.youtubeUrl || ""}/>
-
+        <S.TitleInput
+          type="text"
+          placeholder="링크를 복사해 주세요."
+          onChange={props.onChangeYoutubeUrl}
+          defaultValue={props.data?.fetchBoard.youtubeUrl || ""}
+        />
 
         <S.SmallTitle>사진 첨부</S.SmallTitle>
 
-        <S.PicDiv >
-        {props.imageUpload?.map((el:any, index:any)=>(
-          <UploadFilePage key={uuidv4()} fileUrl={el} index={index} onChangeFileUrl={props.onChangeFileUrl}/>
-        ))}
-
+        <S.PicDiv>
+          {props.imageUpload?.map((el: any, index: any) => (
+            <UploadFilePage
+              key={uuidv4()}
+              fileUrl={el}
+              index={index}
+              onChangeFileUrl={props.onChangeFileUrl}
+            />
+          ))}
         </S.PicDiv>
-
 
         <S.SmallTitle>메인 설정</S.SmallTitle>
         <S.MainSet>

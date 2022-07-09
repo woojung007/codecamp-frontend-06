@@ -103,7 +103,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
     }
   };
 
-  // 패치 받은 이미지가 있다면 미리보기 이미지로 보여줘라 , data가 있을 때만
   useEffect(() => {
     if (props.data?.fetchBoard.images?.length) {
       setImageUpload([...props.data?.fetchBoard.images]);
@@ -144,7 +143,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
           },
         },
       });
-      // console.log("Inputs", Inputs)
 
       if (writer !== "" && password !== "" && title !== "" && contents !== "") {
         Modal.success({
@@ -232,7 +230,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
   };
 
   // 주소 modal창
-
   const showModal = () => {
     setIsOpen(true);
   };

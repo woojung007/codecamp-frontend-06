@@ -1,10 +1,3 @@
-
-
-
-
-
-//presenter
-export interface IBoardBestListUI{
-
-    BestBoardsData?:any
+export interface IBoardBestListUI {
+  BestBoardsData?: any;
 }

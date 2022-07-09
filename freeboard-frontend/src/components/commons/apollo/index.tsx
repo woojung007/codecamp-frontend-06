@@ -1,43 +1,38 @@
-import {ApolloClient, ApolloProvider,InMemoryCache,ApolloLink} from '@apollo/client'
-import { createUploadLink } from 'apollo-upload-client';
-import { useRecoilState } from 'recoil';
-import { accessTokenState, userInfoState } from '../../../commons/store/index';
-import { ReactNode, useEffect } from 'react';
-
-
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  ApolloLink,
+} from "@apollo/client";
+import { createUploadLink } from "apollo-upload-client";
+import { useRecoilState } from "recoil";
+import { accessTokenState, userInfoState } from "../../../commons/store/index";
+import { ReactNode, useEffect } from "react";
 
 interface IAppProps {
   children: ReactNode;
 }
 
+export default function ApolloSetting(props: IAppProps) {
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [, setUserInfo] = useRecoilState(userInfoState);
 
-export default function ApolloSetting(props: IAppProps){
-  const [accessToken,setAccessToken] = useRecoilState(accessTokenState);
-  const [,setUserInfo] = useRecoilState(userInfoState);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+    setAccessToken(accessToken || "");
+    setUserInfo(userInfo || "");
+  }, []);
 
+  const uploadLink = createUploadLink({
+    uri: "https://backend06.codebootcamp.co.kr/graphql22",
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
 
-  useEffect(()=>{
-    const accessToken = localStorage.getItem("accessToken")
-    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}")
-    setAccessToken(accessToken || "")
-    setUserInfo(userInfo || "")
-  },[])
+  const client = new ApolloClient({
+    link: ApolloLink.from([uploadLink]),
+    cache: new InMemoryCache(),
+  });
 
-
-
-    const uploadLink = createUploadLink({
-        uri: "http://backend06.codebootcamp.co.kr/graphql",
-        headers: {Authorization: `Bearer ${accessToken}`}
-      });
-    
-      const client = new ApolloClient({
-        link: ApolloLink.from([uploadLink]),
-        cache: new InMemoryCache(),
-      });
-
-    return(
-        <ApolloProvider client = {client}>
-            {props.children}
-        </ApolloProvider>
-    )
+  return <ApolloProvider client={client}>{props.children}</ApolloProvider>;
 }

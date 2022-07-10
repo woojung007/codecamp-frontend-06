@@ -32,5 +32,7 @@ export default function EventLoopPage() {
     console.log("=======끝!!!!=======");
   };
 
-  return <button onClick={onClickTimer}>시작!!!</button>;
+  return (
+  <button onClick={onClickTimer}>시작!!!</button>
+  );
 }

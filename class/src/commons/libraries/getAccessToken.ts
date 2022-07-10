@@ -15,7 +15,7 @@ export async function getAccessToken() {
 
     // http -> https 로 바뀌어야 한다
     const graphQLClient = new GraphQLClient(
-      "https://backend06.codebootcamp.co.kr/graphql22",
+      "https://backend06.codebootcamp.co.kr/graphql",
       { credentials: "include" }
     );
 

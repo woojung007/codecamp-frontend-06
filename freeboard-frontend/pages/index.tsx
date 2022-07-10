@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-// import { Button } from 'antd';
 
 function LandingPage() {
   const BodyHTML = styled.div`

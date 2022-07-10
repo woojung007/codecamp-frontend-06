@@ -1,27 +1,26 @@
 import * as s from "./BoardList.styles";
 import { IListUIProps } from "./BoardList.types";
-import {v4 as uuidv4} from 'uuid'
-import styled from '@emotion/styled';
+import { v4 as uuidv4 } from "uuid";
+import styled from "@emotion/styled";
 
-
-interface WordStyleProps{
-  isMatched:boolean
+interface WordStyleProps {
+  isMatched: boolean;
 }
 
-
 const Word = styled.span`
-  color: ${(props: WordStyleProps) => (props.isMatched ? "red" : "black")};
-`
-
-
-
+  color: ${(props: WordStyleProps) => (props.isMatched ? "crimson" : "black")};
+`;
 
 export default function BoardListUI(props: IListUIProps) {
   return (
     <s.BodyHTML>
       <s.Container>
         <s.SearchDiv>
-          <s.SearchInput onChange={props.onChangeSearch} type="text" placeholder="제목을 검색해주세요." />
+          <s.SearchInput
+            onChange={props.onChangeSearch}
+            type="text"
+            placeholder="제목을 검색해주세요."
+          />
           <s.SearchDateInput
             type="number"
             placeholder="YYYY.MM.DD ~ YYYY.MM.DD"
@@ -37,19 +36,38 @@ export default function BoardListUI(props: IListUIProps) {
           </s.RowTitle>
           {props.data?.fetchBoards.map((el: any, index: number) => (
             <s.Row key={el._id}>
-              <s.ColumnNum>{index + 1}</s.ColumnNum>
-              <s.Column  id={el._id} onClick={props.onClickMoveToBoardDetail}>
+              <s.ColumnNum id={el._id} onClick={props.onClickMoveToBoardDetail}>
+                {index + 1}
+              </s.ColumnNum>
+              <s.Column id={el._id} onClick={props.onClickMoveToBoardDetail}>
                 {el.title
-                .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
-                .split("#$%") 
-                .map((el:any)=> (
-                  <Word key={uuidv4()} isMatched={props.keyword === el}>{el}</Word>
-                ))}
+                  .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
+                  .split("#$%")
+                  .map((title: any) => (
+                    <Word
+                      key={uuidv4()}
+                      isMatched={props.keyword === title}
+                      id={el._id}
+                      onClick={props.onClickMoveToBoardDetail}
+                    >
+                      {title}
+                    </Word>
+                  ))}
               </s.Column>
-              <s.ColumnSmall>{el.writer}</s.ColumnSmall>
-              <s.ColumnSmall>{el.createdAt.slice(0,10)}</s.ColumnSmall>
+              <s.ColumnSmall
+                id={el._id}
+                onClick={props.onClickMoveToBoardDetail}
+              >
+                {el.writer}
+              </s.ColumnSmall>
+              <s.ColumnSmall
+                id={el._id}
+                onClick={props.onClickMoveToBoardDetail}
+              >
+                {el.createdAt.slice(0, 10)}
+              </s.ColumnSmall>
             </s.Row>
-          ))} 
+          ))}
 
           <s.ListBottomDiv>
             <s.BoardWriteBtn onClick={props.moveToWrite}>

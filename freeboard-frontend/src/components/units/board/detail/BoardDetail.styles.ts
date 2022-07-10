@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
-import {PaperClipOutlined, EnvironmentOutlined, LikeFilled, DislikeFilled} from '@ant-design/icons'
-
-
-
+import {
+  PaperClipOutlined,
+  EnvironmentOutlined,
+  LikeFilled,
+  DislikeFilled,
+} from "@ant-design/icons";
 
 export const BodyHTML = styled.div`
   width: 100vw;
@@ -25,8 +27,6 @@ export const ContentsContainer = styled.div`
   margin-bottom: 87px;
 `;
 
-
-
 // Header
 export const Header = styled.div`
   display: flex;
@@ -35,35 +35,27 @@ export const Header = styled.div`
   padding-top: 80px;
   padding-bottom: 20px;
   border-bottom: 1px solid #bdbdbd;
-
 `;
 
 export const HeaderTopDiv = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100px;
-padding-bottom: 20px;
-float: right;
-
-`
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  padding-bottom: 20px;
+  float: right;
+`;
 
 export const HeaderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 80%;
-  /* background-color: violet; */
 `;
-
-
 
 export const LocationDiv = styled.div`
   color: black;
   text-align: center;
 `;
-
-
 
 export const InfoDiv = styled.div`
   display: flex;
@@ -99,23 +91,22 @@ export const IconDiv = styled.div`
 `;
 
 export const LinkIcon = styled(PaperClipOutlined)`
-margin-right: 30px;
-cursor: pointer;
-color: #BDBDBD;
-font-size: 35px;
-:hover{
-  color: #000;
-}
-`
-
+  margin-right: 30px;
+  cursor: pointer;
+  color: #bdbdbd;
+  font-size: 35px;
+  :hover {
+    color: #000;
+  }
+`;
 
 export const LocationIcon = styled(EnvironmentOutlined)`
-cursor: pointer;
-color: #BDBDBD;
-font-size: 30px;
-&:hover{
-  color: #000;
-}
+  cursor: pointer;
+  color: #bdbdbd;
+  font-size: 30px;
+  &:hover {
+    color: #000;
+  }
 `;
 
 // content
@@ -132,7 +123,6 @@ export const BoardDiv = styled.div`
   justify-content: center;
   width: 100%;
 `;
-
 
 export const ImageBoardDiv = styled.div`
   display: flex;
@@ -151,20 +141,21 @@ export const BoardTitle = styled.div`
 export const BoardImage = styled.img`
   width: 996px;
   height: 480px;
-  background-color: aliceblue;
   margin-bottom: 40px;
+  border-bottom: 1px solid #ebebeb;
 `;
 
 export const BoardContents = styled.div`
   width: 100%;
-  background-color: aliceblue;
+  border-bottom: 1px solid #ebebeb;
+
   margin-bottom: 40px;
 `;
 
 export const BoardVideo = styled.div`
   width: 486px;
   height: 240px;
-  background-color: aliceblue;
+  border-bottom: 1px solid #ebebeb;
   margin-bottom: 163px;
 `;
 
@@ -190,11 +181,9 @@ export const LikeIcon = styled(LikeFilled)`
   color: #ffd600;
   cursor: pointer;
   font-size: 30px;
-  &:hover{
-    
+  &:hover {
   }
 `;
-
 
 export const LikeNum = styled.div`
   height: 27px;
@@ -205,17 +194,14 @@ export const LikeNum = styled.div`
   color: #ffd600;
 `;
 
-
 export const DisLikeIcon = styled(DislikeFilled)`
   color: #888;
   font-size: 30px;
   cursor: pointer;
-&:hover{
+  &:hover {
     color: black;
   }
 `;
-
-
 
 export const DisLikeNum = styled.div`
   height: 27px;
@@ -240,7 +226,6 @@ export const BtnDiv = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 87px;
-
 `;
 
 export const GoBtn = styled.button`
@@ -249,4 +234,3 @@ export const GoBtn = styled.button`
   border: 1px solid #bdbdbd;
   cursor: pointer;
 `;
-

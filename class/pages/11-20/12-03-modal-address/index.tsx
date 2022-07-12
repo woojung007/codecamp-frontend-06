@@ -41,8 +41,6 @@ const ModalCustomPage = () => {
         <DaumPostcode   onComplete={handleComplete} />
         </Modal>
         }
-
-
       
       {/* 모달 숨겼다가 나타나게 하는 방법
       </Modal>

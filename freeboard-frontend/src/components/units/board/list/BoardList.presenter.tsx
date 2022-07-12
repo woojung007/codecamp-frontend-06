@@ -35,37 +35,24 @@ export default function BoardListUI(props: IListUIProps) {
             <s.ColumnSmall>날짜</s.ColumnSmall>
           </s.RowTitle>
           {props.data?.fetchBoards.map((el: any, index: number) => (
-            <s.Row key={el._id}>
-              <s.ColumnNum id={el._id} onClick={props.onClickMoveToBoardDetail}>
-                {index + 1}
-              </s.ColumnNum>
-              <s.Column id={el._id} onClick={props.onClickMoveToBoardDetail}>
+            <s.Row
+              key={el._id}
+              id={el._id}
+              onClick={props.onClickMoveToBoardDetail}
+            >
+              <s.ColumnNum>{index + 1}</s.ColumnNum>
+              <s.Column>
                 {el.title
                   .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
                   .split("#$%")
                   .map((title: any) => (
-                    <Word
-                      key={uuidv4()}
-                      isMatched={props.keyword === title}
-                      id={el._id}
-                      onClick={props.onClickMoveToBoardDetail}
-                    >
+                    <Word key={uuidv4()} isMatched={props.keyword === title}>
                       {title}
                     </Word>
                   ))}
               </s.Column>
-              <s.ColumnSmall
-                id={el._id}
-                onClick={props.onClickMoveToBoardDetail}
-              >
-                {el.writer}
-              </s.ColumnSmall>
-              <s.ColumnSmall
-                id={el._id}
-                onClick={props.onClickMoveToBoardDetail}
-              >
-                {el.createdAt.slice(0, 10)}
-              </s.ColumnSmall>
+              <s.ColumnSmall>{el.writer}</s.ColumnSmall>
+              <s.ColumnSmall>{el.createdAt.slice(0, 10)}</s.ColumnSmall>
             </s.Row>
           ))}
 

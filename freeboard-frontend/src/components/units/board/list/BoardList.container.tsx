@@ -14,8 +14,7 @@ export default function BoardList(props: IBoardList) {
   };
 
   const onClickMoveToBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
-    console.log("clicked", (event.target as HTMLDivElement).id);
-    router.push(`/boards/${(event.target as HTMLDivElement).id}`);
+    router.push(`/boards/${(event.currentTarget as HTMLDivElement).id}`);
   };
 
   const getDebounce = _.debounce((data) => {

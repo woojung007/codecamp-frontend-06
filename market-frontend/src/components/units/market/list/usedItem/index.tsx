@@ -117,13 +117,6 @@ export default function UsedItemPage(props: IPropsUsedItemPage) {
     router.push(`/usedItem/${(event.target as HTMLDivElement).id}`);
   };
 
-  // 오늘 본 상품
-  // const NewDate = new Date();
-  // const yyyy = NewDate.getFullYear();
-  // const mm = NewDate.getMonth() + 1;
-  // const dd = NewDate.getDate();
-  // const date = `${yyyy}-${mm}-${dd}`;
-
   const onClickDataSaveLocal = (el: any) => () => {
     const todayBasket = JSON.parse(localStorage.getItem(getDate()) || "[]");
     const temp = todayBasket.filter(

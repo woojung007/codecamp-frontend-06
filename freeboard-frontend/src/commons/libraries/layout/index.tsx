@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
-  /* position: fixed; */
 `;
 const BodyWrapper = styled.div`
   display: flex;
@@ -26,24 +25,20 @@ interface ILayoutProps {
 }
 
 const HIDDEN_BANNER = ["/boards/new", "/user/login", "/user/signup"];
-
 const HIDDEN_NAV = ["/boards/new", "/user/login", "/user/signup"];
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
-  let isHidden = HIDDEN_BANNER.includes(router.asPath);
-  isHidden = HIDDEN_NAV.includes(router.asPath);
-
-  // const isHidden = HIDDEN_SIDEBAR.includes(router.asPath)
+  const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
+  const isHiddenNav = HIDDEN_NAV.includes(router.asPath);
 
   return (
     <Wrapper>
       <LayoutHeader />
-      {!isHidden && <LayoutBanner />}
-      {!isHidden && <LayoutNavigation />}
+      {!isHiddenBanner && <LayoutBanner />}
+      {!isHiddenNav && <LayoutNavigation />}
       <BodyWrapper>
-        <div>{/* {!isHidden &&  <LayoutSidebar />} */}</div>
         <Body>{props.children}</Body>
       </BodyWrapper>
       <LayoutFooter />

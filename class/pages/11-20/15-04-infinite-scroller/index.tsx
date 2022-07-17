@@ -48,7 +48,7 @@ export default function MapBoardPage() {
           <MyColumn>{index + 1}</MyColumn>
           <MyColumn>{el.writer}</MyColumn>
         </MyRow>
-      ))}
+      )) || <div></div>}
     </InfiniteScroll>
   );
 }

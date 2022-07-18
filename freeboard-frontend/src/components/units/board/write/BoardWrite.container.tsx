@@ -1,4 +1,3 @@
-// 컨테이너
 import { ChangeEvent, useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -41,8 +40,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
     IMutationUpdateBoardArgs
   >(UPDATE_BOARD);
 
-  // onclickUpdate
-
   const onClickUpdate = async () => {
     const currentFile = JSON.stringify(imageUpload);
     const defaultFile = JSON.stringify(props.data.fetchBoard.images);
@@ -65,7 +62,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
       const updateVariables: IUpdateVariables = {
         boardId: router.query.boardId,
       };
-      // 비어있지 않으면 채워줘라
+
+      // 비어있지 않으면 채워줘라 - defaultValue 할 때 무조건 필요함
       if (writer) updateVariables.writer = writer;
       if (title) updateVariables.title = title;
       if (contents) updateVariables.content = contents;
@@ -82,17 +80,17 @@ export default function BoardWrite(props: IBoardWriteProps) {
       await updateBoard({
         variables: {
           updateBoardInput: {
-            title: title,
-            contents: contents,
-            youtubeUrl: youtubeUrl,
+            title,
+            contents,
+            youtubeUrl,
             boardAddress: {
               zipcode,
               address,
-              addressDetail: addressDetail,
+              addressDetail,
             },
             images: imageUpload,
           },
-          password: password,
+          password,
           boardId: String(router.query.boardId),
         },
       });
@@ -129,16 +127,16 @@ export default function BoardWrite(props: IBoardWriteProps) {
       const result = await createBoard({
         variables: {
           createBoardInput: {
-            writer: writer,
-            password: password,
-            title: title,
-            contents: contents,
-            youtubeUrl: youtubeUrl,
+            writer,
+            password,
+            title,
+            contents,
+            youtubeUrl,
             images: imageUpload,
             boardAddress: {
-              zipcode: zipcode,
-              address: address,
-              addressDetail: addressDetail,
+              zipcode,
+              address,
+              addressDetail,
             },
           },
         },

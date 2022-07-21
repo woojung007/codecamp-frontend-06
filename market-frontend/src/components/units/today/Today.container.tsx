@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { IUseditem } from "../../../commons/types/generated/types";
 import { useRecoilState } from "recoil";
-import { isToday } from "../store/index";
+import { isToday } from "../../commons/store/index";
 
 const Today = styled.div`
   width: 200px;

@@ -3,7 +3,7 @@ import { IUsedItemListUI } from "./UsedItemList.types";
 import InfiniteScroll from "react-infinite-scroller";
 import UsedItemPage from "./usedItem/index";
 import { IBoard } from "../../../../commons/types/generated/types";
-import TodayPage from "../../../commons/today/Today.container";
+import TodayPage from "../../today/Today.container";
 
 export default function UsedItemListUI(props: IUsedItemListUI) {
   return (

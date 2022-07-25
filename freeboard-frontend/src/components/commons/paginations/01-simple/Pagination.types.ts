@@ -1,22 +1,15 @@
-
-// Container
-
-export interface IPaginationPage{
-    dataBoardsCount: number
-    refetch: any
-    fetchBoardsCount: any
-
+export interface IPaginationPage {
+  dataBoardsCount: any;
+  refetch: any;
 }
 
-
-// presenter
-export interface IPaginationUI{
-    dataRefetchBoards?: any
-    dataBoardsCount?: any
-    onClickPage:any
-    onClickPrevPage:any
-    onClickNextPage: any
-    startPage: number
-    lastPage:number
-    current: number
+export interface IPaginationUI {
+  dataRefetchBoards?: any;
+  dataBoardsCount?: any;
+  onClickPage: any;
+  onClickPrevPage: any;
+  onClickNextPage: any;
+  startPage: number;
+  lastPage: number;
+  current: number;
 }

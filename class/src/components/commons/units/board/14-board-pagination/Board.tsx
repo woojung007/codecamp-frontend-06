@@ -1,33 +1,26 @@
-import styled from "@emotion/styled"
-
-
-
+import styled from "@emotion/styled";
 
 const MyRow = styled.div`
-    display: flex;
-    
-`
+  display: flex;
+`;
 
 const MyColumn = styled.div`
-    /* width: 25%; */
+  /* width: 25%; */
+`;
 
-`
-
-
-export default function Board(props){
-
-    
-
-
-    return (
-        <>
-        {props.data?.fetchBoards.map((el: any, index:any) => (
-                <MyRow key={el._id}>
-                    <MyColumn><input type="checkbox" /></MyColumn>
-                    <MyColumn>{el.number}</MyColumn>
-                    <MyColumn>{index+1}</MyColumn>
-                    <MyColumn>{el.writer}</MyColumn>
-                </MyRow>
-            ))}</>
-    )
+export default function Board(props: any) {
+  return (
+    <>
+      {props.data?.fetchBoards.map((el: any, index: any) => (
+        <MyRow key={el._id}>
+          <MyColumn>
+            <input type="checkbox" />
+          </MyColumn>
+          <MyColumn>{el.number}</MyColumn>
+          <MyColumn>{index + 1}</MyColumn>
+          <MyColumn>{el.writer}</MyColumn>
+        </MyRow>
+      ))}
+    </>
+  );
 }

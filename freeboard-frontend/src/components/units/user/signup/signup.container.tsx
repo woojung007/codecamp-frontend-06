@@ -56,12 +56,12 @@ export default function SignUpContainer() {
   };
 
   const onClickSignUp = async () => {
-    // if(password !== password1 ){
-    //     setPasswordError("비밀번호가 다릅니다.");
-    //     setPassword1Error("비밀번호가 다릅니다.");
-    // }else{
-    //     setPasswordError("")
-    // }
+    if (password !== password1) {
+      setPasswordError("비밀번호가 다릅니다.");
+      setPassword1Error("비밀번호가 다릅니다.");
+    } else {
+      setPasswordError("");
+    }
 
     try {
       await createUser({
